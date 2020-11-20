@@ -5,6 +5,6 @@ Members:
 -Alejandro Lupo
 -Ramiro Martinez
 -Uriel Marinzalda
--Alexandra Mareo
+-Alexandra Maero
 -Santiago Blas Medina
 -Nicolas Lobos
