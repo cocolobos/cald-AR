@@ -1,0 +1,23 @@
+{
+  "name": "caldar",
+  "version": "1.0.0",
+  "description": "Radium Rocket Proyect \"caldAR\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cocolobos/cald-AR.git"
+  },
+  "author": "grupo-t1",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cocolobos/cald-AR/issues"
+  },
+  "homepage": "https://github.com/cocolobos/cald-AR#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
