@@ -1,0 +1,10 @@
+[{"id":1,"building":93,"boilerId":90,"start_timestamp":"1579567762000","end_timestamp":"1580327969000"},
+{"id":2,"building":31,"boilerId":85,"start_timestamp":"1590543527000","end_timestamp":"1589116718000"},
+{"id":3,"building":72,"boilerId":41,"start_timestamp":"1592074530000","end_timestamp":"1593316511000"},
+{"id":4,"building":45,"boilerId":60,"start_timestamp":"1595914234000","end_timestamp":"1601803285000"},
+{"id":5,"building":71,"boilerId":50,"start_timestamp":"1599317461000","end_timestamp":"1583636307000"},
+{"id":6,"building":71,"boilerId":38,"start_timestamp":"1593858393000","end_timestamp":"1581442230000"},
+{"id":7,"building":88,"boilerId":53,"start_timestamp":"1584352087000","end_timestamp":"1583892167000"},
+{"id":8,"building":97,"boilerId":73,"start_timestamp":"1597518835000","end_timestamp":"1582767049000"},
+{"id":9,"building":30,"boilerId":85,"start_timestamp":"1594688466000","end_timestamp":"1574652002000"},
+{"id":10,"building":54,"boilerId":83,"start_timestamp":"1602891989000","end_timestamp":"1579575264000"}]
