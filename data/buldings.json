@@ -4,55 +4,64 @@
   "boilerID": 5,
   "fullname": "Twiyo",
   "phone": "2245527031"
-}, {
+},
+{
   "id": 2,
   "address": "069 Shasta Parkway",
   "boilerID": 8,
   "fullname": "Buzzshare",
   "phone": "3364493085"
-}, {
+}, 
+{
   "id": 3,
   "address": "6 Beilfuss Terrace",
   "boilerID": 7,
   "fullname": "Twiyo",
   "phone": "5357836594"
-}, {
+}, 
+{
   "id": 4,
   "address": "2832 Bunting Pass",
   "boilerID": 40,
   "fullname": "Snaptags",
   "phone": "5102666171"
-}, {
+}, 
+{
   "id": 5,
   "address": "17 Susan Circle",
   "boilerID": 9,
   "fullname": "Flipbug",
   "phone": "8189803005"
-}, {
+}, 
+{
   "id": 6,
   "address": "43636 Helena Center",
   "boilerID": 23,
   "fullname": "Ailane",
   "phone": "5585687864"
-}, {
+}, 
+{
   "id": 7,
   "address": "46563 Redwing Avenue",
   "boilerID": 31,
   "fullname": "Twinte",
   "phone": "9429106955"
-}, {
+}, 
+{
   "id": 8,
   "address": "21274 Stone Corner Court",
   "boilerID": 18,
   "fullname": "Zoozzy",
   "phone": "9462091923"
-}, {
+}, 
+{
   "id": 9,
   "address": "446 Knutson Plaza",
   "boilerID": 2,
   "fullname": "Wikizz",
   "phone": "9546322620"
-}, {
+}, 
+{
   "id": 10,
   "address": "62 Pleasure Road",
   "boilerID": 40,
