@@ -1,0 +1,19 @@
+{
+  "name": "boilers-functions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "boilers-functions.js",
+  "scripts": {
+    "start": "node boilers-functions",
+    "dev": "nodemon boilers-functions"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
