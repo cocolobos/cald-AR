@@ -23,3 +23,4 @@ app.delete('/technicians/:id', (req,res) => {
         res.status(400).json({msg:"Technician not found"})
     }
 })
+module.exports = app;
