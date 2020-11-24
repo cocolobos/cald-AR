@@ -1,6 +1,6 @@
 const express = require ('express');
 const techniciansController = require ('./controllers/technicians');
-
+const appointmentsController = require('./controllers/appointments-functions');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -35,3 +35,19 @@ app.get('/deleteTechnicianById/:id', (req,res) => {
 });
 
 app.listen (PORT, () => console.log("hi"));
+
+
+app.get('/appointments', (req, res) => {
+    const appointments = appointmentsController.getAllAppointments();
+    res.json(appointments);
+});
+
+app.get('/appointment/:id', (req, res) => {
+    const appointment = appointmentsController.getAppointmentsById('id');
+    res.json(appointment);
+});
+
+app.get('/deleteAppointment/:id', (req, res) => {
+    const appointment = appointmentsController.deleteAppointmentsById('id');
+    res.json(appointment);
+});
