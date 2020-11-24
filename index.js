@@ -72,6 +72,28 @@ app.get("/getBoilersById/:id", (req, res) => {
   const boilerById = boilersController.getBoilerById(id);
   if (boilerById) {
     res.json(boilerById);
+const express = require ('express');
+const server = express();
+const PORT = process.env.PORT || 5000
+server.listen (PORT, () => console.log("hi"));
+
+
+const customersController = require("./controllers/customers");
+
+// getAllCustomers
+
+server.get("/getAllCustomers", (req, res) => {
+  const customers = customersController.getAllCustomers();
+  res.json(customers);
+});
+
+//getCustomersById
+
+server.get("/getCustomersById/:id", (req, res) => {
+  let id = parseInt(req.params.id);
+  const customersById = customersController.getCustomerById(id);
+  if ( customersById) {
+    res.json(customersById);
   } else {
     res.status(400).json("Id not found");
   }
@@ -152,6 +174,61 @@ app.get("/buildings/:id", (req, res) => {
   const buildingById = buildingsController.deletebuildingById(id);
   if (buildingById) {
     res.json(buildings);
+//getCustomerType
+
+server.get("/getCustomerType/:customerType", (req, res) => {
+  let customerType = req.params.customerType;
+  const customerTypeResult = customersController.getCustomerType(customerType);
+  if (customerTypeResult.length === 0) {
+    res.status(400).json("Customer type not found");
+  } else {
+    res.json(customerTypeResult);
+  }
+});
+
+//getCustomerByEmail
+
+server.get("/getCustomerByEmail/:email", (req, res) => {
+  let email = req.params.email;
+  const customerEmail = customersController.getCustomerByEmail(email);
+ if (customerEmail) {
+        res.json(customerEmail);
+      } else {
+        res.status(404).json("Email not found");
+      }
+});
+
+//getCustomersByBuildings
+
+server.get("/getCustomersByBuildings/:buildings", (req, res) => {
+  let buildings = parseInt(req.params.buildings);
+  const customersBybuildings = customersController.getCustomersByBuildings(buildings);
+  if (customersBybuildings.length === 0) {
+    res.status(400).json("Buildings number not found");
+  } else {
+     res.json(customersBybuildings);
+  }
+});
+
+//getFiscalAddress
+
+server.get("/getCustomerByAddress/:fiscal_address", (req, res) => {
+  let address = req.params.fiscal_address;
+  const customerAddress = customersController.getCustomerByAddress(address);
+ if (customerAddress) {
+        res.json(customerAddress);
+      } else {
+        res.status(404).json("Fiscal address not found");
+      }
+});
+
+//deleteCustomersById
+
+server.delete("/deleteCustomersById/:id", (req, res) => {
+  let id = parseInt(req.params.id);
+  const customersById = customersController.getCustomerById(id);
+  if ( customersById) {
+    res.json(customersById);
   } else {
     res.status(400).json("Id not found");
   }
