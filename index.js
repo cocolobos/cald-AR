@@ -61,9 +61,9 @@ app.get('/getAllBoilers', (req, res) => {
 });
 app.get('/getBoilersById/:id', (req, res) => {
     let id = parseInt(req.params.id);
-    const boillerById = boilersController.getBoilerById(id);
-    if (boillerById){
-        res.json(boillerById)
+    const boilerById = boilersController.getBoilerById(id);
+    if (boilerById){
+        res.json(boilerById)
     } else {
         res.status(400).json('Id not found');
     }
@@ -79,9 +79,9 @@ app.get('/getBoilerType/:boilerType', (req, res) => {
 })
 app.get('/deleteBoilerById/:id', (req, res) => {
     let id = parseInt(req.params.id);
-    const boillerById = boilersController.getBoilerById(id);
-    if (boillerById){
-        res.json(boillerById)
+    const boilerById = boilersController.getBoilerById(id);
+    if (boilerById){
+        res.json(boilerById)
     } else {
         res.status(400).json('Id not found')
     }
