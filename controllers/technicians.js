@@ -7,7 +7,7 @@ const getTechnicianById = (id) => {
     return technician;
 }
 const getTechniciansByAttribute = (attr, val) => {
-    const technician = technicians.filter(tech => tech[attr] === val);
+    const technician = technicians.filter(tech => tech[attr].toString() === val);
     return technician;
 }
 const deleteTechnicianById = (id) => {
