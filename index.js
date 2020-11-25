@@ -8,7 +8,7 @@ app.get('/getAllTechnicians', (req, res) => {
 });
 app.get('/getTechnicianById/:id',(req,res) => {
     const id = req.params.id;
-    const technicians = techniciansController.getTechnicianById(req.params.id);
+    const technicians = techniciansController.getTechnicianById(id);
     if(technicians){
         res.json(technicians);
     }else{
@@ -25,7 +25,7 @@ app.get('/getTechnicianByAttribute/:attribute/:value',(req,res) => {
 });
 app.get('/deleteTechnicianById/:id', (req,res) => {
     const id = req.params.id;
-    const technicians = techniciansController.deleteTechnicianById(req.params.id);
+    const technicians = techniciansController.deleteTechnicianById(id);
     res.json(technicians);
 });
 app.listen (PORT, () => console.log("hi"));
