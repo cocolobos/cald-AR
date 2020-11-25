@@ -9,6 +9,11 @@ const getAppointmentsById = id => {
     return appointment;
 };
 
+const getAppointmentsByAttribute = (attr, val) => {
+    const appointment = appointments.filter(appointment => appointment[attr].toString() === val);
+    return appointment;
+};
+
 const deleteAppointmentsById = id => {
     const appointment = appointments.filter(appointment => appointment.id.toString() !== id);
     return appointment;
@@ -17,5 +22,6 @@ const deleteAppointmentsById = id => {
 module.exports = {
     getAllAppointments,
     getAppointmentsById,
+    getAppointmentsByAttribute,
     deleteAppointmentsById
 };
