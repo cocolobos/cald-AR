@@ -1,4 +1,5 @@
 const technicians = require ('../data/technicians-data.json');
+
 const getAllTechnicians = () => {
     return technicians;
 }
@@ -14,10 +15,10 @@ const deleteTechnicianById = (id) => {
     const technician = technicians.filter(technician => technician.id.toString() !== id);
     return technician;
 }
+
 module.exports = {
     getAllTechnicians,
     getTechnicianById,
     getTechniciansByAttribute,
     deleteTechnicianById
 };
-
