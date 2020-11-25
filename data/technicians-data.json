@@ -21,8 +21,8 @@
     },
     {
         "id":3,
-        "firstName":"Tori"
-        ,"lastName":"Sawney",
+        "firstName":"Tori",
+        "lastName":"Sawney",
         "email":"tsawney2@sbwire.com",
         "typeIds":2,
         "skillsId":2,
