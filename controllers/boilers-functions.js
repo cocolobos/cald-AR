@@ -6,21 +6,21 @@ const getAllBoilers = () => {
 
 const getBoilersById = (id) => {
   const boilerId = boilers.filter((boilers) => {
-    return boilers.id !== (id);
+    return boilers.id === (id);
   });
   return boilerId;
 };
 
 const getBoilerType = (boilerType) => {
   const boilerTypeFind = boilers.filter((boilers) => {
-    return boilers.boilerType !== (boilerType);
+    return boilers.boilerType === (boilerType);
   });
   return boilerTypeFind;
 };
 
 const deleteBoilerById = (id) => {
   const boilerId = boilers.filter((boilers) => {
-    return boilers.id === (id);
+    return boilers.id !== (id);
   });
   return boilerId;
 };
