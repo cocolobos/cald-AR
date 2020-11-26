@@ -1,6 +1,6 @@
 const express = require ('express');
 const techniciansController = require ('./controllers/technicians');
-
+const appointmentsController = require('./controllers/appointments-functions');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -35,3 +35,27 @@ app.get('/deleteTechnicianById/:id', (req,res) => {
 });
 
 app.listen (PORT, () => console.log("hi"));
+
+// get all appointments
+app.get('/appointments', (req, res) => {
+    const appointments = appointmentsController.getAllAppointments();
+    res.json(appointments);
+});
+
+// get appointment by id
+app.get('/appointment/:id', (req, res) => {
+    const appointment = appointmentsController.getAppointmentsById('id');
+    res.json(appointment);
+});
+
+// get appointment by atributte
+app.get('/appointment/attribute/:value', (req, res) => {
+    const appointment = appointmentsController.getAppointmentsByAttribute(req.params.attribute, req.params.value);
+    res.json(appointment);
+});
+
+// delete appoinrment by id
+app.get('/deleteAppointment/:id', (req, res) => {
+    const appointment = appointmentsController.deleteAppointmentsById('id');
+    res.json(appointment);
+});
