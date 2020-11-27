@@ -1,4 +1,4 @@
-const appointments = require ('../data/appointments-data.json');
+const appointments = require ('../../data/appointments-data.json');
 
 const getAllAppointments = () => {
     return appointments;

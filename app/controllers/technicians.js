@@ -1,4 +1,4 @@
-const technicians = require ('../data/technicians-data.json');
+const technicians = require ('../../data/technicians-data.json');
 
 const getAllTechnicians = () => {
     return technicians;
