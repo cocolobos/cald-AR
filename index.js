@@ -2,9 +2,9 @@ const express = require("express");
 const techniciansController = require("./controllers/technicians");
 const appointmentsController = require("./controllers/appointments-functions");
 const boilersController = require("./controllers/boilers-functions");
+const boilerTypesController = require('./controllers/boiler-types-functions')
 const buildingsController = require("./controllers/buildings-functions");
 const customersController = require("./controllers/customers");
-const boilerTypesController = require('./controllers/boiler-types-functions')
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -258,4 +258,4 @@ app.get('/deleteBoilerTypeById/:id', (req, res) => {
     }
 });
 
-app.listen (PORT, () => console.log("hi"));
+app.listen (PORT, () => console.log(`Server running at port ${PORT}`));
