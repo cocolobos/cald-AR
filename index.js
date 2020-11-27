@@ -2,7 +2,8 @@ const express = require("express");
 const techniciansController = require("./controllers/technicians");
 const appointmentsController = require("./controllers/appointments-functions");
 const boilersController = require("./controllers/boilers-functions");
-const buildingsController = requiere("./controllers/buildings-functions");
+const buildingsController = require("./controllers/buildings-functions");
+const customersController = require("./controllers/customers");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -77,6 +78,21 @@ app.get("/getBoilersById/:id", (req, res) => {
   }
 });
 
+app.get("/getAllCustomers", (req, res) => {
+  const customers = customersController.getAllCustomers();
+  res.json(customers);
+});
+
+app.get("/getCustomersById/:id", (req, res) => {
+  let id = parseInt(req.params.id);
+  const customersById = customersController.getCustomerById(id);
+  if ( customersById) {
+    res.json(customersById);
+  } else {
+    res.status(400).json("Id not found");
+  }
+});
+
 app.get("/getBoilerType/:boilerType", (req, res) => {
   let boilerType = req.params.boilerType;
   const boilerTypeResult = boilersController.getBoilerType(boilerType);
@@ -98,7 +114,6 @@ app.get("/deleteBoilerById/:id", (req, res) => {
 });
 
 app.get("/buildings", (req, res) => {
-  console.log("hi");
   const buildings = buildingsController.getBuildingsAll();
   res.json(buildings);
 });
@@ -152,6 +167,56 @@ app.get("/buildings/:id", (req, res) => {
   const buildingById = buildingsController.deletebuildingById(id);
   if (buildingById) {
     res.json(buildings);
+  } else {
+    res.status(400).json("building ID not found");
+  }
+});
+
+app.get("/getCustomerType/:customerType", (req, res) => {
+  let customerType = req.params.customerType;
+  const customerTypeResult = customersController.getCustomerType(customerType);
+  if (customerTypeResult.length === 0) {
+    res.status(400).json("Customer type not found");
+  } else {
+    res.json(customerTypeResult);
+  }
+});
+
+app.get("/getCustomerByEmail/:email", (req, res) => {
+  let email = req.params.email;
+  const customerEmail = customersController.getCustomerByEmail(email);
+  if (customerEmail) {
+      res.json(customerEmail);
+  } else {
+    res.status(404).json("Email not found");
+  }
+});
+
+app.get("/getCustomersByBuildings/:buildings", (req, res) => {
+  let buildings = parseInt(req.params.buildings);
+  const customersBybuildings = customersController.getCustomersByBuildings(buildings);
+  if (customersBybuildings.length === 0) {
+    res.status(400).json("Buildings number not found");
+  } else {
+     res.json(customersBybuildings);
+  }
+});
+
+app.get("/getCustomerByAddress/:fiscal_address", (req, res) => {
+  let address = req.params.fiscal_address;
+  const customerAddress = customersController.getCustomerByAddress(address);
+ if (customerAddress) {
+        res.json(customerAddress);
+      } else {
+        res.status(404).json("Fiscal address not found");
+      }
+});
+
+app.get("/deleteCustomersById/:id", (req, res) => {
+  let id = parseInt(req.params.id);
+  const customersById = customersController.getCustomerById(id);
+  if ( customersById) {
+    res.json(customersById);
   } else {
     res.status(400).json("Id not found");
   }
