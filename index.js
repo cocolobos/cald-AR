@@ -2,7 +2,8 @@ const express = require("express");
 const techniciansController = require("./controllers/technicians");
 const appointmentsController = require("./controllers/appointments-functions");
 const boilersController = require("./controllers/boilers-functions");
-const buildingsController = requiere("./controllers/buildings-functions");
+const buildingsController = require("./controllers/buildings-functions");
+const customersController = require("./controllers/customers");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -72,24 +73,17 @@ app.get("/getBoilersById/:id", (req, res) => {
   const boilerById = boilersController.getBoilerById(id);
   if (boilerById) {
     res.json(boilerById);
-const express = require ('express');
-const server = express();
-const PORT = process.env.PORT || 5000
-server.listen (PORT, () => console.log("hi"));
+  } else {
+    res.status(400).json("Id not found");
+  }
+});
 
-
-const customersController = require("./controllers/customers");
-
-// getAllCustomers
-
-server.get("/getAllCustomers", (req, res) => {
+app.get("/getAllCustomers", (req, res) => {
   const customers = customersController.getAllCustomers();
   res.json(customers);
 });
 
-//getCustomersById
-
-server.get("/getCustomersById/:id", (req, res) => {
+app.get("/getCustomersById/:id", (req, res) => {
   let id = parseInt(req.params.id);
   const customersById = customersController.getCustomerById(id);
   if ( customersById) {
@@ -120,7 +114,6 @@ app.get("/deleteBoilerById/:id", (req, res) => {
 });
 
 app.get("/buildings", (req, res) => {
-  console.log("hi");
   const buildings = buildingsController.getBuildingsAll();
   res.json(buildings);
 });
@@ -174,9 +167,12 @@ app.get("/buildings/:id", (req, res) => {
   const buildingById = buildingsController.deletebuildingById(id);
   if (buildingById) {
     res.json(buildings);
-//getCustomerType
+  } else {
+    res.status(400).json("building ID not found");
+  }
+});
 
-server.get("/getCustomerType/:customerType", (req, res) => {
+app.get("/getCustomerType/:customerType", (req, res) => {
   let customerType = req.params.customerType;
   const customerTypeResult = customersController.getCustomerType(customerType);
   if (customerTypeResult.length === 0) {
@@ -186,21 +182,17 @@ server.get("/getCustomerType/:customerType", (req, res) => {
   }
 });
 
-//getCustomerByEmail
-
-server.get("/getCustomerByEmail/:email", (req, res) => {
+app.get("/getCustomerByEmail/:email", (req, res) => {
   let email = req.params.email;
   const customerEmail = customersController.getCustomerByEmail(email);
- if (customerEmail) {
-        res.json(customerEmail);
-      } else {
-        res.status(404).json("Email not found");
-      }
+  if (customerEmail) {
+      res.json(customerEmail);
+  } else {
+    res.status(404).json("Email not found");
+  }
 });
 
-//getCustomersByBuildings
-
-server.get("/getCustomersByBuildings/:buildings", (req, res) => {
+app.get("/getCustomersByBuildings/:buildings", (req, res) => {
   let buildings = parseInt(req.params.buildings);
   const customersBybuildings = customersController.getCustomersByBuildings(buildings);
   if (customersBybuildings.length === 0) {
@@ -210,9 +202,7 @@ server.get("/getCustomersByBuildings/:buildings", (req, res) => {
   }
 });
 
-//getFiscalAddress
-
-server.get("/getCustomerByAddress/:fiscal_address", (req, res) => {
+app.get("/getCustomerByAddress/:fiscal_address", (req, res) => {
   let address = req.params.fiscal_address;
   const customerAddress = customersController.getCustomerByAddress(address);
  if (customerAddress) {
@@ -222,9 +212,7 @@ server.get("/getCustomerByAddress/:fiscal_address", (req, res) => {
       }
 });
 
-//deleteCustomersById
-
-server.delete("/deleteCustomersById/:id", (req, res) => {
+app.get("/deleteCustomersById/:id", (req, res) => {
   let id = parseInt(req.params.id);
   const customersById = customersController.getCustomerById(id);
   if ( customersById) {
