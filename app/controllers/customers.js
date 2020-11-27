@@ -1,4 +1,4 @@
-const customers = require("../data/customers-data.json");
+const customers = require("../../data/customers-data.json");
 
 const getAllCustomers = () => {
   return customers;

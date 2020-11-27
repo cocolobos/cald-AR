@@ -1,12 +1,27 @@
 const express = require("express");
-const techniciansController = require("./controllers/technicians");
-const appointmentsController = require("./controllers/appointments-functions");
-const boilersController = require("./controllers/boilers-functions");
-const boilerTypesController = require('./controllers/boiler-types-functions')
-const buildingsController = require("./controllers/buildings-functions");
-const customersController = require("./controllers/customers");
+const db = require("./app/models");
+const techniciansController = require("./app/controllers/technicians");
+const appointmentsController = require("./app/controllers/appointments-functions");
+const boilersController = require("./app/controllers/boilers-functions");
+const boilerTypesController = require('./app/controllers/boiler-types-functions')
+const buildingsController = require("./app/controllers/buildings-functions");
+const customersController = require("./app/controllers/customers");
 const app = express();
+
 const PORT = process.env.PORT || 5000;
+
+db.mongoose
+  .connect(db.url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => {
+    console.log("Connected to the database!");
+  })
+  .catch(err => {
+    console.log("Cannot connect to the database!", err);
+    process.exit();
+  });
 
 app.get("/getAllTechnicians", (req, res) => {
   const technicians = techniciansController.getAllTechnicians();

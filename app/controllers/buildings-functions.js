@@ -1,4 +1,4 @@
-const buildings = require("../data/buildings-data.json");
+const buildings = require("../../data/buildings-data.json");
 
 const getBuildingsAll = () => {
   return buildings;

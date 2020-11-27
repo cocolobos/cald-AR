@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "load-env": "node -r dotenv/config . dotenv_config_path=./.env",
+    "start": "npm run load-env && node index.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,10 @@
   },
   "homepage": "https://github.com/cocolobos/cald-AR#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.3",
+    "mongoose": "^5.10.17"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

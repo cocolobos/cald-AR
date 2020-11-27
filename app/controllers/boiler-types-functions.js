@@ -1,4 +1,4 @@
-const boilerTypes = require("../data/boiler-types.json");
+const boilerTypes = require("../../data/boiler-types.json");
 
 const getAllBoilerTypes = () => {
   return boilerTypes;
