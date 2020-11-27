@@ -4,6 +4,7 @@ const appointmentsController = require("./controllers/appointments-functions");
 const boilersController = require("./controllers/boilers-functions");
 const buildingsController = require("./controllers/buildings-functions");
 const customersController = require("./controllers/customers");
+const boilerTypesController = require('./controllers/boiler-types-functions')
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -222,4 +223,39 @@ app.get("/deleteCustomersById/:id", (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log("hi"));
+app.get('/getAllBoilerTypes', (req, res) => {
+    const boilerTypes = boilerTypesController.getAllBoilerTypes();
+    res.json(boilerTypes);
+});
+
+app.get('/getBoilerTypeById/:id', (req, res) => {
+    let id = parseInt(req.params.id);
+    const boilerTypeById = boilerTypesController.getBoilerTypeById(id);
+    if (boilerTypeById){
+        res.json(boilerTypeById)
+    } else {
+        res.status(400).json('Id not found');
+    }
+})
+
+app.get('/getBoilerStock/:boilerStock', (req, res) => {
+    let boilerStock = req.params.boilerStock;
+    const boilerStockResult = boilerTypesController.getBoilerStock(boilerStock);
+    if(boilerStockResult.length === 0){
+        res.status(400).json('Stock not found')
+    } else {
+        res.json(boilerStockResult);
+    }
+})
+
+app.get('/deleteBoilerTypeById/:id', (req, res) => {
+    let id = parseInt(req.params.id);
+    const boilerTypeById = boilerTypesController.getBoilerTypeById(id);
+    if (boilerTypeById){
+        res.json(boilerTypeById)
+    } else {
+        res.status(400).json('Id not found')
+    }
+});
+
+app.listen (PORT, () => console.log("hi"));
