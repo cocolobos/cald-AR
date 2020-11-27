@@ -7,6 +7,29 @@ const buildingsController = require("./controllers/buildings-functions");
 const customersController = require("./controllers/customers");
 const app = express();
 const PORT = process.env.PORT || 5000;
+const { MongoClient } = require('mongodb');
+
+async function dbConnection() {
+    const uri = "";
+    
+    const client = new MongoClient(uri, { useUnifiedTopology: true });
+
+    try {
+        // Connect to MongoDB Cluster
+        await client.connect();
+
+        //Make the appropriate DB calls
+        // await
+
+    } catch (e) {
+        console.error(e);
+    } finally {
+        // Close the connection to the MongoDB cluster
+        await client.close();
+    }
+}
+
+dbConnection().catch(console.error);
 
 app.get("/getAllTechnicians", (req, res) => {
   const technicians = techniciansController.getAllTechnicians();
