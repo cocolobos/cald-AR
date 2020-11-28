@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true}));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 db.mongoose
   .connect(db.url, {
@@ -24,5 +24,4 @@ db.mongoose
   });
 
 app.use(router);
-
 app.listen (PORT, () => console.log(`Server running at port ${PORT}`));
