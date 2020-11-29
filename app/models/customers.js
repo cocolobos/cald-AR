@@ -1,6 +1,6 @@
 module.exports = (mongoose) => {
-  const Customer = mongoose.model(
-    "customer",
+  const Customers = mongoose.model(
+    "Customers",
     mongoose.Schema(
       {
         id: {
@@ -28,5 +28,5 @@ module.exports = (mongoose) => {
       { timestamps: true }
     )
   );
-  return Customer;
+  return Customers;
 };

@@ -1,7 +1,7 @@
 const db = require("../models");
-const Customer = db.customer;
+const Customer = db.customers;
 
-// Create and save a new building
+// Create and save a new customer
 exports.create = (req, res) => {
   //Validate request
   if (
@@ -39,34 +39,34 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all Building from the database
+// Retrieve all appointments from db
 
 exports.findAll = (req, res) => {
-  building
-    .find({})
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving the customer",
-      });
-    });
+    Customer.find({})
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error ocurred while retrieving appointments."
+            });
+        });
 };
+
 
 // Find a single Customer with an ID
 
 exports.findOne = (req, res) => {
-  building
+ Customer
     .find({ id: req.params.id })
-    .then((result) => {
+    .then((data) => {
       if (!data) {
         return res.status(404).send({
           message: ` Customer with id ${req.params.id} was not found`,
         });
       }
-      res.send(result);
+      res.send(data);
     })
     .catch((err) => {
       res.status(500).send({

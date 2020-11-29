@@ -11,9 +11,12 @@ router.use('/boilersTypes',boilersTypeRouter);
 
 module.exports = router;
 const customerRouter = require("./customers");
+const {route} = require('./customers')
 
-let router = require("express").Router();
+const customersRouter = require("./customers");
 
-router.use("./customers", customerRouter);
+var router = require("express").Router();
+
+router.use("/customers", customersRouter);
 
 module.exports = router;

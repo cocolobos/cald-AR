@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 db.mongoose
   .connect(db.url, {
