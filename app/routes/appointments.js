@@ -1,20 +1,20 @@
- const appoinment = require("../controllers/appointment");
+ const appointment = require("../controllers/appointment");
 
  var router = require("express").Router();
 
 // get all appointments
-router.get("/", appoinment.findAll);
+router.get("/", appointment.findAll);
 
 // get appointment by id
-router.get("/:id", appoinment.findOne);
+router.get("/:id", appointment.findOne);
 
 // create a new appointment
-router.post("/", appoinment.create);
+router.post("/", appointment.create);
 
-// update appoinrment by id
-router.put("/:id", appoinment.update);
+// update appointment by id
+router.put("/:id", appointment.update);
 
 // delete appointment by id
-router.delete("/:id", appoinment.delete);
+router.delete("/:id", appointment.delete);
 
 module.exports = router;

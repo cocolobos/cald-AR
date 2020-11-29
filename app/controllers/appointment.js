@@ -14,6 +14,7 @@ exports.create = (req, res) => {
         id: req.body.id,
         issue: req.body.issue,
         date: req.body.date,
+        estimatedTime: req.body.estimatedTime
     });
 
     // save appointment in db

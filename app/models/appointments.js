@@ -17,7 +17,7 @@ module.exports = mongoose => {
                 }, 
                 estimatedTime: {
                     type: Number,
-                    required: false,
+                    required: true,
                 },                                    
             },
             { timestamps: true }
