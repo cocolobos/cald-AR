@@ -10,3 +10,10 @@ router.use('/technicians',techniciansRouter);
 router.use('/boilersTypes',boilersTypeRouter);
 
 module.exports = router;
+const customerRouter = require("./customers");
+
+let router = require("express").Router();
+
+router.use("./customers", customerRouter);
+
+module.exports = router;
