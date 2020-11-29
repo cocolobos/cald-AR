@@ -28,8 +28,8 @@ exports.create = (req, res) => {
   //Save customer in the database
   customer
     .save(customer)
-    .then((result) => {
-      res.send(result);
+    .then(data => {
+      res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
@@ -58,8 +58,7 @@ exports.findAll = (req, res) => {
 // Find a single Customer with an ID
 
 exports.findOne = (req, res) => {
- Customer
-    .find({ id: req.params.id })
+ Customer.findOne({ id: req.params.id })
     .then((data) => {
       if (!data) {
         return res.status(404).send({

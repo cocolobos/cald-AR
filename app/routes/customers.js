@@ -1,7 +1,7 @@
 const customer = require('../controllers/customer');
 
 
-let router = require('express').Router();
+var router = require('express').Router();
 
 // Retrieve all customers
 
