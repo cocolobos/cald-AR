@@ -1,6 +1,6 @@
 module.exports=mongoose =>{
-    const BoilersTypes = mongoose.model(
-        "boilers-types",
+    const boilersTypes = mongoose.model(
+        "boilersTypes",
         mongoose.Schema(
             {
                 id:{
@@ -25,5 +25,5 @@ module.exports=mongoose =>{
             {timestamps: true}
         )
     )
-    return BoilersTypes
+    return boilersTypes
 };
