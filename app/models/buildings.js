@@ -8,7 +8,7 @@ module.exports = mongoose => {
                 id: Number,
                 adress: String,
                 boilerID: Number,
-                fulname: String,
+                fullname: String,
                 phone: String
             },
             { timestamps: true }
