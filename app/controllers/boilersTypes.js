@@ -1,21 +1,17 @@
 const db = require("../models");
 const BoilerType = db.boilersTypes;
-
-//create and save a new boiler type
 exports.create = (req,res) => {
   //validate request
   if(!req.body.id || !req.body.skillsId || !req.body.descriptions || !req.body.stock){
     res.status(400).send({message:"Content can not be empty"});
     return;
   }
-  //create boiler type
   const boilerType = new BoilerType({
     id: req.body.id,
     skillsId: req.body.skillsId,
     descriptions: req.body.descriptions,
     stock: req.body.stock,
   });
-  //save boiler type
   boilerType
     .save(boilerType)
     .then(data => {
@@ -27,7 +23,6 @@ exports.create = (req,res) => {
       });
     });
 };
-//retrieve all boiler type
 exports.findAll=(req, res) => {
   BoilerType.find({})
     .then(data => {
@@ -39,7 +34,6 @@ exports.findAll=(req, res) => {
       });
     });
 };
-//find a single boiler type by id
 exports.findOne=(req,res)=> {
   BoilerType.findOne({ id: req.params.id })
     .then(data => {
@@ -56,14 +50,12 @@ exports.findOne=(req,res)=> {
       });
     });
 };
-//update Boiler Tpe by id
 exports.update=(req,res)=> {
   if (!req.body){
     return res.status(400).send({
       message:"Data to update can not be empty"
     });
   }
-  //validate request
   if(!req.body.id || !req.body.skillsId || !req.body.descriptions || !req.body.stock){
     res.status(400).send({message:"Content can not be empty"});
     return;
@@ -83,7 +75,6 @@ exports.update=(req,res)=> {
       });
     });
 };
-//delete boiler type by id
 exports.delete=(req,res)=> {
   const id = req.params.id;
   BoilerType.findOneAndRemove({id}, {useFindAndModify:false})
