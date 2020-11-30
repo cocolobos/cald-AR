@@ -22,6 +22,9 @@ db.mongoose
     process.exit();
   });
 
+
+app.use(router);
+
 app.use(router);
 
 app.listen (PORT, () => console.log(`Server running at port ${PORT}`));
