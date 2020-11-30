@@ -1,4 +1,4 @@
-module.exports=mongoose =>{
+module.exports= (mongoose) => {
     const Technicians = mongoose.model(
         "technicians",
         mongoose.Schema(
@@ -45,5 +45,5 @@ module.exports=mongoose =>{
             {timestamps: true}
         )
     )
-    return Technicians
+    return Technicians;
 };
