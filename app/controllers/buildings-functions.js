@@ -2,14 +2,14 @@ const db = require("../models");
 const Building = db.buildings;
 
 exports.create = (req, res) => {
-    if (!req.body.id || !req.body.adress || !req.body.boilerID || !req.body.fullname || !req.body.phone) {
+    if (!req.body.id || !req.body.address || !req.body.boilerID || !req.body.fullname || !req.body.phone) {
         res.status(400).send({ message: 'Data missing' });
         return;
     }
 
     const building = new Building({
         id: req.body.id,
-        adress: req.body.adress,
+        address: req.body.address,
         boilerID: req.body.boilerID,
         fullname: req.body.fullname,
         phone: req.body.phone
@@ -60,31 +60,29 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-    if (!req.body) {
-        return res.status(400).send({
-            message: 'Empty data.'
-        });
-    }
-
-    if (!req.body.id || !req.body.adress || !req.body.boilerID || !req.body.fullname || !req.body.phone) {
+    if (!req.body.address && !req.body.boilerID && !req.body.fullname && !req.body.phone) {
         res.status(400).send({ message: 'Some data is empty, please fill it.' });
         return;
     }
 
-    const id = req.params.id;
+    const buildingId = req.params.id;
+    const {
+        id,
+        ...body
+    } = req.body
 
-    Building.findOneAndUpdate({id}, req.body, { useFindAndModify: false })
+    Building.findOneAndUpdate({id:buildingId}, body, { useFindAndModify: false })
         .then(data => {
             if (!data) {
                 res.status(404).send({
                     message: 'Can not update building, the building was not found.'
                 });
-            } else res.send({ message: 'Building was updated.' });
-            res.send(data);
+            } else res.send({ message: 'Building was updated.'});
+            
         })
         .catch(err => {
             res.status(500).send({
-                message: 'Can not update building id ' + id
+                message: 'Can not update building id ' + buildingId
             });
         });
 };
@@ -113,9 +111,9 @@ exports.delete = (req, res) => {
 //   return buildingId;
 // };
 
-// const getbuildingByAdress = (adress) => {
-//   const buildingAdress = buildings.find((building) => building.buildingsAdress === adress);
-//   return buildingAdress;
+// const getbuildingByaddress = (address) => {
+//   const buildingaddress = buildings.find((building) => building.buildingsaddress === address);
+//   return buildingaddress;
 // };
 
 // const getbuildingByName = (name) => {
@@ -136,7 +134,7 @@ exports.delete = (req, res) => {
 // module.exports = {
 //   getBuildingsAll,
 //   getbuildingById,
-//   getbuildingByAdress,
+//   getbuildingByaddress,
 //   getbuildingByPhone,
 //   getbuildingByName,
 //   deletebuildingById,
