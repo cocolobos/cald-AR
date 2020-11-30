@@ -742,6 +742,151 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "findAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/buildings/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"buildings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findOne",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/buildings/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"buildings",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "11",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "1321 asdas",
+							"type": "text"
+						},
+						{
+							"key": "boilerID",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "fullname",
+							"value": "asdsad",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "1231231",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/buildings/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"buildings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteOne",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/buildings/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"buildings",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "122",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "adasd qweqwe",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/buildings/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"buildings",
+						"3"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
