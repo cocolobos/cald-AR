@@ -1,15 +1,12 @@
 const db = require("../models");
 const Appointment = db.appointments;
 
-// create and save an appointment
-exports.create = (req, res) => {
-    // validate req
+exports.create = (req, res) => {    
     if (!req.body.id || !req.body.issue || !req.body.date || !req.body.estimatedTime) {
         res.status(400).send({ message: "Content can not be empty." });
         return;
     }
 
-    // create an appointment
     const appointment = new Appointment({
         id: req.body.id,
         issue: req.body.issue,
@@ -17,7 +14,6 @@ exports.create = (req, res) => {
         estimatedTime: req.body.estimatedTime
     });
 
-    // save appointment in db
     appointment
         .save(appointment)
         .then(data => {
@@ -31,7 +27,6 @@ exports.create = (req, res) => {
         });
 };
 
-// retrieve all appointments from db
 exports.findAll = (req, res) => {
     Appointment.find({})
         .then(data => {
@@ -45,7 +40,6 @@ exports.findAll = (req, res) => {
         });
 };
 
-// find appointment by id
 exports.findOne = (req, res) => {
     Appointment.findOne({id:req.params.id})
         .then(data => {
@@ -63,14 +57,14 @@ exports.findOne = (req, res) => {
             });
         });
 };
-// update an appointment by id
+
 exports.update = (req, res) => {
     if (!req.body) {
         return res.status(400).send({
             message: "Data to update can not be empty."
         });
     }
-    // validate request
+
     if (!req.body.id || !req.body.issue || !req.body.date || !req.body.estimatedTime) {
         res.status(400).send({ message: "Content can not be empty." });
         return;
@@ -94,7 +88,6 @@ exports.update = (req, res) => {
         });
 };
 
-// delete appointment by id
 exports.delete = (req, res) => {
     const id = req.params.id;
     Appointment.findOneAndRemove({id}, { useFindAndModify: false })
