@@ -24,4 +24,3 @@ router.put('/:id', customer.update);
 router.delete('/:id', customer.delete);
 
 module.exports = router;
-

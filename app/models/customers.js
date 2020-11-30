@@ -10,13 +10,12 @@ module.exports = (mongoose) => {
         customerType: {
           type: String,
           required: true,
-          enum: ["Particular", "Business"],
         },
         email: {
           type: String,
           required: true,
         },
-        building: {
+        buildings: {
           type: Number,
           required: true,
         },
@@ -27,6 +26,6 @@ module.exports = (mongoose) => {
       },
       { timestamps: true }
     )
-  );
-  return customers;
+  )
+  return customers
 };

@@ -4,14 +4,8 @@ const Customer = db.customers;
 // Create and save a new customer
 exports.create = (req, res) => {
   //Validate request
-  if (
-    !req.body.id ||
-    !req.body.customerType ||
-    !req.body.email ||
-    !req.body.building ||
-    !req.body.fiscal_address
-  ) {
-    res.status(400).send({ message: "This fields are require" });
+  if (!req.body.id || !req.body.customerType || !req.body.email || !req.body.buildings || !req.body.fiscal_address) {
+    res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
@@ -21,14 +15,14 @@ exports.create = (req, res) => {
     id: req.body.id,
     customerType: req.body.customerType,
     email: req.body.email,
-    building: req.body.building,
+    buildings: req.body.buildings,
     fiscal_address: req.body.fiscal_address,
   });
 
   //Save customer in the database
   customer
     .save(customer)
-    .then(data => {
+    .then((data) => {
       res.send(data);
     })
     .catch((err) => {
@@ -42,23 +36,22 @@ exports.create = (req, res) => {
 // Retrieve all appointments from db
 
 exports.findAll = (req, res) => {
-    Customer.find({})
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error ocurred while retrieving appointments."
-            });
-        });
+  Customer.find({})
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error ocurred while retrieving appointments.",
+      });
+    });
 };
-
 
 // Find a single Customer with an ID
 
 exports.findOne = (req, res) => {
- Customer.findOne({ id: req.params.id })
+  Customer.findOne({ id: req.params.id })
     .then((data) => {
       if (!data) {
         return res.status(404).send({
@@ -88,10 +81,10 @@ exports.update = (req, res) => {
     !req.body.id ||
     !req.body.customerType ||
     !req.body.email ||
-    !req.body.building ||
+    !req.body.buildings ||
     !req.body.fiscal_address
   ) {
-    res.status(400).send({ message: "This fields are require" });
+    res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
@@ -103,9 +96,8 @@ exports.update = (req, res) => {
         return res.status(404).send({
           message: ` Cannot update Customer with id=${id}.Maybe Customer was not found!`,
         });
-      } else {
-        res.send({ message: "Customer was updated succesfully" });
-      }
+      } else res.send({ message: "Customer was updated successfully." });
+      res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
