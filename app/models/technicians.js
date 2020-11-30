@@ -1,6 +1,6 @@
 module.exports= (mongoose) => {
     const Technicians = mongoose.model(
-        "technicians",
+        "Technicians",
         mongoose.Schema(
             {
                 id:{
@@ -32,14 +32,10 @@ module.exports= (mongoose) => {
                 hour_rate:{
                     type:Number,
                     require: true,
-                    min:0,
-                    max:50,
                 },
                 daily_capacity:{
                     type:Number,
                     require: true,
-                    min:0,
-                    max:8
                 }
             },
             {timestamps: true}
