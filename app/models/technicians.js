@@ -22,8 +22,6 @@ module.exports= (mongoose) => {
                 typeIds:{
                     type:Number,
                     require: true,
-                    min:1,
-                    max:3
                 },
                 skillsId:{
                     type:Number,
