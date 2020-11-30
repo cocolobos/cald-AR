@@ -6,7 +6,7 @@ module.exports = mongoose => {
         mongoose.Schema(
             {
                 id: Number,
-                adress: String,
+                address: String,
                 boilerID: Number,
                 fullname: String,
                 phone: String
