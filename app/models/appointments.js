@@ -1,6 +1,6 @@
 module.exports = mongoose => {
     const appointments = mongoose.model(
-        "Appointments",
+        "appointments",
         mongoose.Schema(
             {
                 id: {
@@ -14,11 +14,11 @@ module.exports = mongoose => {
                 date: {
                     type: String,
                     required: true,
-                }, 
+                },
                 estimatedTime: {
                     type: Number,
                     required: true,
-                },                                    
+                },
             },
             { timestamps: true }
         )

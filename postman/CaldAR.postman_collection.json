@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d70648ff-9108-46d1-9216-29270b21fd70",
+		"_postman_id": "94258962-0f8c-4612-a879-483ab0b870a0",
 		"name": "CaldAR",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -44,7 +44,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1,\r\n    \"issue\": \"water lose\",\r\n    \"date\": \"11/28/20\",\r\n    \"estimatedTime\": 6\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -76,7 +76,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1,\r\n    \"issue\": \"oil lose\",\r\n    \"date\": \"11/28/20\",\r\n    \"estimatedTime\": 6\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -134,7 +134,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1,\r\n    \"issue\": \"water lose\",\r\n    \"date\": \"11/28/20\",\r\n    \"estimatedTime\": 6\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"

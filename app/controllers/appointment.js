@@ -1,7 +1,7 @@
 const db = require("../models");
 const Appointment = db.appointments;
 
-exports.create = (req, res) => {    
+exports.create = (req, res) => {
     if (!req.body.id || !req.body.issue || !req.body.date || !req.body.estimatedTime) {
         res.status(400).send({ message: "Content can not be empty." });
         return;
