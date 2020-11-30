@@ -1,13 +1,16 @@
 const express = require ('express');
 const router = express.Router();
 
-router.get('/', require('../controllers/buildings/getBuildingsAll'));
+router.get("/", building.findAll);
 
-router.delete('/:id', require('../controllers/buildings/deleteBuildingById'));
+router.get("/:id", building.findOne);
 
-router.get('/:id', requiere('../controllers/buildings/getBuildingById'));
+router.post("/", building.create);
 
-router.get('/:attribute/:value', require('../controllers/buildings/getBuildingsByAttribute'));
+router.put("/:id", building.update);
+
+router.delete("/:id", building.delete);
+
 
 
 module.exports = router;
