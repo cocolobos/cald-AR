@@ -4,13 +4,14 @@ const Boilers = db.boilers;
 //Create and save a new boiler
 exports.create = (req, res) => {
     //Validate request
-    if(!req.body.id || !req.body.typeId || !req.body.maintaince_rate || !req.body.hour_maintaince_cost || !req.body.hour_eventual_cost){
+    console.log('body', req)
+    /*if(!req.body.id || !req.body.typeId || !req.body.maintaince_rate || !req.body.hour_maintaince_cost || !req.body.hour_eventual_cost){
         res.status(400).send({ message: "Content can not be empty!"});
         return;
-    }
+    }*/
 
     //Create a boiler
-    const boilers = new boiler({
+    const boilers = new Boilers({
         id: req.body.id,
         typeId: req.body.typeId,
         maintaince_rate: req.body.maintaince_rate,
@@ -80,7 +81,7 @@ exports.update = (req, res) => {
 
     const id = req.params.id;
 
-    Boilers.finOneAndUpdate({id}, req.body, {useFindAndModify: false})
+    Boilers.findOneAndUpdate({id}, req.body, {useFindAndModify: false})
         .then(data =>{
             if(!data){
                 res.status(400).send({

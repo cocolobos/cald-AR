@@ -3,29 +3,29 @@ module.exports = mongoose => {
         "boilers",
         mongoose.Schema(
             {
-                id: {
+                id:{
                     type: Number,
                     required: true,
                 },
-                typeId: {
+                typeId:{
                     type: Number,
                     required: true,
                 },
-                maintaince_rate: {
+                maintaince_rate:{
                     type: String,
                     required: true,
                 },
-                hour_maintaince_cost: {
-                    type: Number,
+                hour_maintaince_cost:{
+                    type: String,
                     required: true,
                 },
-                hour_eventual_cost: {
-                    type: Number, 
+                hour_eventual_cost:{
+                    type: String, 
                     required: true,
-                },
+                }
             },
             { timestamps: true }
         )
     )
-    return boiler
+    return boiler;
 };

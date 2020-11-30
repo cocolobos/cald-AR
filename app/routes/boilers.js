@@ -14,6 +14,6 @@ router.get("/:id", boilers.findOne);
 router.post("/:id", boilers.update);
 
 //Delete a boiler with id
-router.post("/:id", boilers.delete);
+router.delete("/:id", boilers.delete);
 
 module.exports = router;

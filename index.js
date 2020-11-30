@@ -5,7 +5,7 @@ const router = require('./app/routes');
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 const PORT = process.env.PORT || 5000;
 
