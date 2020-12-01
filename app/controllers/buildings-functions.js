@@ -78,7 +78,7 @@ exports.update = (req, res) => {
                     message: 'Can not update building, the building was not found.'
                 });
             } else res.send({ message: 'Building was updated.'});
-            
+
         })
         .catch(err => {
             res.status(500).send({

@@ -65,7 +65,7 @@ exports.update=(req,res)=> {
     return;
   }
   const id = req.params.id;
-  
+
   BoilerType.findOneAndUpdate({id}, req.body, {useFindAndModify: false})
     .then(data => {
       if(!data){

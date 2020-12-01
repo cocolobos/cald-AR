@@ -1,15 +1,28 @@
-const { mongoose } = require(".");
-
 module.exports = mongoose => {
     const Buildings = mongoose.model (
         'building',
         mongoose.Schema(
             {
-                id: Number,
-                address: String,
-                boilerID: Number,
-                fullname: String,
-                phone: String
+              id:{
+                type:Number,
+                require: true
+              },
+              address:{
+                type:String,
+                require: true
+              },
+              boilerID:{
+                type:Number,
+                require: true
+              },
+              fullname:{
+                type:String,
+                require: true
+              },
+              phone:{
+                type:String,
+                require: true
+              }
             },
             { timestamps: true }
         )

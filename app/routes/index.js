@@ -1,4 +1,3 @@
-const { route } = require('./appointments');
 const appointmentsRouter = require("./appointments");
 const techniciansRouter = require("./technicians");
 const boilersTypeRouter = require("./boilers-types");
