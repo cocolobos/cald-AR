@@ -1,7 +1,7 @@
 const db = require("../models");
 const BoilerType = db.boilersTypes;
+
 exports.create = (req,res) => {
-  //validate request
   if(!req.body.id || !req.body.skillsId || !req.body.descriptions || !req.body.stock){
     res.status(400).send({message:"Content can not be empty"});
     return;
@@ -12,6 +12,7 @@ exports.create = (req,res) => {
     descriptions: req.body.descriptions,
     stock: req.body.stock,
   });
+
   boilerType
     .save(boilerType)
     .then(data => {
@@ -23,6 +24,7 @@ exports.create = (req,res) => {
       });
     });
 };
+
 exports.findAll=(req, res) => {
   BoilerType.find({})
     .then(data => {
@@ -34,6 +36,7 @@ exports.findAll=(req, res) => {
       });
     });
 };
+
 exports.findOne=(req,res)=> {
   BoilerType.findOne({ id: req.params.id })
     .then(data => {
@@ -50,6 +53,7 @@ exports.findOne=(req,res)=> {
       });
     });
 };
+
 exports.update=(req,res)=> {
   if (!req.body){
     return res.status(400).send({
@@ -61,6 +65,7 @@ exports.update=(req,res)=> {
     return;
   }
   const id = req.params.id;
+  
   BoilerType.findOneAndUpdate({id}, req.body, {useFindAndModify: false})
     .then(data => {
       if(!data){
@@ -75,6 +80,7 @@ exports.update=(req,res)=> {
       });
     });
 };
+
 exports.delete=(req,res)=> {
   const id = req.params.id;
   BoilerType.findOneAndRemove({id}, {useFindAndModify:false})
