@@ -233,7 +233,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"id\": 3,\r\n        \"email\": \"jlopez@gmail.com\",\r\n        \"typeIds\": 3,\r\n        \"skillsId\": 1,\r\n        \"daily_capacity\": 2,\r\n        \"firstName\": \"jorge\",\r\n        \"hour_rate\": 45.95,\r\n        \"lastName\": \"lopez\"\r\n    }",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -350,7 +350,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 2,\r\n    \"skillsId\": 2,\r\n    \"descriptions\": \"lorem ipsum\",\r\n    \"stock\": 15\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -379,7 +379,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 2,\r\n    \"skillsId\": 2,\r\n    \"descriptions\": \"lorem ipsum\",\r\n    \"stock\": 15\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
