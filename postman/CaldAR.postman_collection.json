@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "93f6a5eb-7167-4c49-9139-863a9abaaf31",
+		"_postman_id": "f4cd3252-bb13-44d8-9156-0f945b228829",
 		"name": "CaldAR",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -587,149 +587,161 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "findAll",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/buildings/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"buildings",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "findOne",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/buildings/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"buildings",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "create",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "id",
-							"value": "11",
-							"type": "text"
-						},
-						{
-							"key": "address",
-							"value": "1321 asdas",
-							"type": "text"
-						},
-						{
-							"key": "boilerID",
-							"value": "2",
-							"type": "text"
-						},
-						{
-							"key": "fullname",
-							"value": "asdsad",
-							"type": "text"
-						},
-						{
-							"key": "phone",
-							"value": "1231231",
-							"type": "text"
+			"name": "Buildings",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buildings/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buildings",
+								""
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/buildings/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"buildings",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "deleteOne",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/buildings/11",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"buildings",
-						"11"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "New Request",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "id",
-							"value": "122",
-							"type": "text"
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "1321 asdas",
+									"type": "text"
+								},
+								{
+									"key": "boilerID",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "fullname",
+									"value": "asdsad",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "1231231",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {}
+							}
 						},
-						{
-							"key": "address",
-							"value": "adasd qweqwe",
-							"type": "text"
+						"url": {
+							"raw": "http://localhost:3000/buildings/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buildings",
+								""
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/buildings/3",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"buildings",
-						"3"
-					]
+				{
+					"name": "findOne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buildings/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buildings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteOne",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/buildings/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buildings",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "122",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "adasd qweqwe",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/buildings/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"buildings",
+								"3"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}
