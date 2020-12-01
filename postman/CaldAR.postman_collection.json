@@ -585,7 +585,7 @@
 				}
 			],
 			"protocolProfileBehavior": {}
-		}
+		},
 		{
 			"name": "findAll",
 			"request": {
