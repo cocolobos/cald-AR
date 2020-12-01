@@ -6,5 +6,6 @@ db.appointments = require("./appointments.js")(mongoose);
 db.technicians = require("./technicians.js")(mongoose);
 db.boilersTypes=require("./boilers-types")(mongoose);
 db.customers = require("./customers.js")(mongoose);
+db.boilers = require("./boilers.js")(mongoose);
 
 module.exports = db;
