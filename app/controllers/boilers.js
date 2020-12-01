@@ -1,16 +1,12 @@
 const db = require("../models");
 const Boilers = db.boilers;
 
-//Create and save a new boiler
 exports.create = (req, res) => {
-    //Validate request
     console.log('body', req)
-    /*if(!req.body.id || !req.body.typeId || !req.body.maintaince_rate || !req.body.hour_maintaince_cost || !req.body.hour_eventual_cost){
+    if(!req.body.id || !req.body.typeId || !req.body.maintaince_rate || !req.body.hour_maintaince_cost || !req.body.hour_eventual_cost){
         res.status(400).send({ message: "Content can not be empty!"});
         return;
-    }*/
-
-    //Create a boiler
+    }
     const boilers = new Boilers({
         id: req.body.id,
         typeId: req.body.typeId,
@@ -18,8 +14,6 @@ exports.create = (req, res) => {
         hour_maintaince_cost: req.body.hour_maintaince_cost,
         hour_eventual_cost: req.body.hour_eventual_cost
     });
-
-    //Save boiler in the database
     boilers
         .save(boilers)
         .then(data => {
@@ -33,7 +27,6 @@ exports.create = (req, res) => {
         });
 }
 
-//Retrieve all boilers from the database
 exports.findAll = (req, res) => {
     Boilers.find({}) 
         .then(data => {
@@ -46,8 +39,6 @@ exports.findAll = (req, res) => {
             }); 
         });
 }
-
-//Find a single boiler with Id
 exports.findOne = (req, res) => {
     Boilers.findOne({id: req.params.id}) 
         .then(data => {
@@ -65,22 +56,18 @@ exports.findOne = (req, res) => {
             }); 
         });
 }
-
-//Update a boiler by the Id in the request
 exports.update = (req, res) => {
     if(!req.body){
         return res.status(400).send({
             message: 'Data to update can not be empty!'
         });
     }
-    //validate request
     if (!req.body.id || !req.body.typeId || !req.body.maintaince_rate || !req.body.hour_maintaince_cost || !req.body.hour_eventual_cost){
         res.status(400).send({ message: "Content can not be empty!"});
         return;
     }
 
     const id = req.params.id;
-
     Boilers.findOneAndUpdate({id}, req.body, {useFindAndModify: false})
         .then(data =>{
             if(!data){
@@ -97,7 +84,6 @@ exports.update = (req, res) => {
         });
 }
 
-//Delete a building with the specified Id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
     Boilers.findOneAndRemove({id}, {useFindAndModify: false})

@@ -585,6 +585,128 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Boilers",
+			"item": [
+				{
+					"name": "Boilers - Get one boiler by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/boilers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"boilers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Boilers - Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/boilers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"boilers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Boilers - Delete one boiler by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/boilers/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"boilers",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Boilers - Create a new boiler",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 51,\r\n        \"typeId\": 79,\r\n        \"maintaince_rate\": \"yearly\",\r\n        \"hour_maintaince_cost\": \"$30.22\",\r\n        \"hour_eventual_cost\": \"$48.73\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/boilers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"boilers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Boilers - Update a boiler by Id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"5fc5ad3a85fc5704944f2b39\",\r\n    \"id\": 51,\r\n    \"typeId\": 91,\r\n    \"maintaince_rate\": \"yearly\",\r\n    \"hour_maintaince_cost\": \"$30.22\",\r\n    \"hour_eventual_cost\": \"$48.73\",\r\n    \"createdAt\": \"2020-12-01T02:40:58.625Z\",\r\n    \"updatedAt\": \"2020-12-01T02:40:58.625Z\",\r\n    \"__v\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/boilers/51",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"boilers",
+								"51"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}
