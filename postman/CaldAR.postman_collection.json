@@ -233,7 +233,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"id\": 3,\r\n        \"email\": \"jlopez@gmail.com\",\r\n        \"typeIds\": 3,\r\n        \"skillsId\": 1,\r\n        \"daily_capacity\": 2,\r\n        \"firstName\": \"jorge\",\r\n        \"hour_rate\": 45.95,\r\n        \"lastName\": \"lopez\"\r\n    }",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -309,6 +309,151 @@
 							"port": "3000",
 							"path": [
 								"technicians"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Boilers Types",
+			"item": [
+				{
+					"name": "Boilers Type - Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/boilersTypes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"boilersTypes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Boilers Type - Get One By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/boilersTypes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"boilersTypes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Boilers Type - Delete One By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/boilersTypes/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"boilersTypes",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Boilers Type - Update One By Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 3,\r\n    \"skillsId\": 2,\r\n    \"descriptions\": \"lorem ipsum\",\r\n    \"stock\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/boilersTypes/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"boilersTypes",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Boilers Type - Create New",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"skillsId\": 3,\r\n    \"descriptions\": \"ipsum\",\r\n    \"stock\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/boilersTypes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"boilersTypes",
+								""
 							]
 						}
 					},
