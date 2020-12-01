@@ -26,7 +26,6 @@ exports.create = (req, res) => {
             }); 
         });
 }
-
 exports.findAll = (req, res) => {
     Boilers.find({}) 
         .then(data => {
@@ -83,7 +82,6 @@ exports.update = (req, res) => {
             }); 
         });
 }
-
 exports.delete = (req, res) => {
     const id = req.params.id;
     Boilers.findOneAndRemove({id}, {useFindAndModify: false})
