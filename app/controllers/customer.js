@@ -1,15 +1,17 @@
 const db = require("../models");
 const Customer = db.customers;
 
-// Create and save a new customer
 exports.create = (req, res) => {
-  //Validate request
-  if (!req.body.id || !req.body.customerType || !req.body.email || !req.body.buildings || !req.body.fiscal_address) {
+  if (
+    !req.body.id ||
+    !req.body.customerType ||
+    !req.body.email ||
+    !req.body.buildings ||
+    !req.body.fiscal_address
+  ) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
-
-  // Create a new curstomer
 
   const customer = new Customer({
     id: req.body.id,
@@ -19,7 +21,6 @@ exports.create = (req, res) => {
     fiscal_address: req.body.fiscal_address,
   });
 
-  //Save customer in the database
   customer
     .save(customer)
     .then((data) => {
@@ -33,8 +34,6 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all appointments from db
-
 exports.findAll = (req, res) => {
   Customer.find({})
     .then((data) => {
@@ -47,8 +46,6 @@ exports.findAll = (req, res) => {
       });
     });
 };
-
-// Find a single Customer with an ID
 
 exports.findOne = (req, res) => {
   Customer.findOne({ id: req.params.id })
@@ -68,15 +65,13 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Update a Customer by the id in the request
-
 exports.update = (req, res) => {
   if (!req.body) {
     return res.status(400).send({
       message: "Data to update can not be empty!",
     });
   }
-  //Validate request
+
   if (
     !req.body.id ||
     !req.body.customerType ||
@@ -105,8 +100,6 @@ exports.update = (req, res) => {
       });
     });
 };
-
-// Delete a Customer with the specified id in the request
 
 exports.delete = (req, res) => {
   const id = req.params.id;

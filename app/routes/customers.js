@@ -1,26 +1,15 @@
-const customer = require('../controllers/customer');
+const customer = require("../controllers/customer");
 
+var router = require("express").Router();
 
-var router = require('express').Router();
+router.get("/", customer.findAll);
 
-// Retrieve all customers
+router.post("/", customer.create);
 
-router.get('/', customer.findAll);
+router.get("/:id", customer.findOne);
 
-// Create a new customer
+router.put("/:id", customer.update);
 
-router.post('/', customer.create);
-
-// Retrieve a single cursomer with ID
-
-router.get('/:id', customer.findOne);
-
-// Update a building with ID
-
-router.put('/:id', customer.update);
-
-// Delete a building with ID
-
-router.delete('/:id', customer.delete);
+router.delete("/:id", customer.delete);
 
 module.exports = router;
