@@ -7,6 +7,6 @@ var router = require("express").Router();
 
 router.use('/appointments', appointmentsRouter)
 router.use('/technicians',techniciansRouter);
-router.use('/boilers-types',boilersTypeRouter);
+router.use('/boilersTypes',boilersTypeRouter);
 
 module.exports = router;
