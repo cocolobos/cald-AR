@@ -6,7 +6,7 @@ module.exports=mongoose =>{
                 id:{
                     type:Number,
                     require: true
-                },                              
+                },
                 skillsId:{
                     type:Number,
                     require: true

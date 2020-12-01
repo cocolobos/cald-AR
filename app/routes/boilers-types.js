@@ -1,5 +1,4 @@
 const boilersTypes = require ("../controllers/boilersTypes");
-
 var router = require ("express").Router();
 
 router.get('/',boilersTypes.findAll);

@@ -20,7 +20,7 @@ module.exports = mongoose => {
                     required: true,
                 },
                 hour_eventual_cost:{
-                    type: String, 
+                    type: String,
                     required: true,
                 }
             },

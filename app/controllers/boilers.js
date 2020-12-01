@@ -21,25 +21,23 @@ exports.create = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: 
-                    err.message || "some error occurred while creating the boiler."
-            }); 
+                message: err.message || "some error occurred while creating the boiler."
+            });
         });
 }
 exports.findAll = (req, res) => {
-    Boilers.find({}) 
+    Boilers.find({})
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message: 
-                    err.message || "some error occurred while retrieving boilers."
-            }); 
+                message: err.message || "some error occurred while retrieving boilers."
+            });
         });
 }
 exports.findOne = (req, res) => {
-    Boilers.findOne({id: req.params.id}) 
+    Boilers.findOne({id: req.params.id})
         .then(data => {
             if (!data){
                 return res.status(404).send({
@@ -50,9 +48,8 @@ exports.findOne = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: 
-                    err.message || "some error occurred while finding the boiler."
-            }); 
+                message: err.message || "some error occurred while finding the boiler."
+            });
         });
 }
 exports.update = (req, res) => {
@@ -77,9 +74,8 @@ exports.update = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: 
-                    err.message || "some error occurred while updating the boiler."
-            }); 
+                message: err.message || "some error occurred while updating the boiler."
+            });
         });
 }
 exports.delete = (req, res) => {
@@ -91,6 +87,6 @@ exports.delete = (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message: "Error removing boiler with de Id:"+ id
-            }); 
+            });
         });
 }
