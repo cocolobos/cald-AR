@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fe8d6231-aecb-43dc-96aa-7ec4bdc35b97",
+		"_postman_id": "4a6928d8-3c6f-4032-8c2b-ce88d29a8837",
 		"name": "CaldAR",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -651,11 +651,11 @@
 				{
 					"name": "Boilers - Create a new boiler",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"id\": 51,\r\n        \"typeId\": 79,\r\n        \"maintaince_rate\": \"yearly\",\r\n        \"hour_maintaince_cost\": \"$30.22\",\r\n        \"hour_eventual_cost\": \"$48.73\"\r\n    }",
+							"raw": "{\r\n        \"id\": 1,\r\n        \"typeId\": 79,\r\n        \"maintaince_rate\": \"yearly\",\r\n        \"hour_maintaince_cost\": \"$30.22\",\r\n        \"hour_eventual_cost\": \"$58.73\"\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -663,14 +663,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/boilers",
+							"raw": "http://localhost:3000/boilers/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"boilers"
+								"boilers",
+								"1"
 							]
 						}
 					},
