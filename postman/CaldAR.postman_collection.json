@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "201a7167-2483-4304-8b53-2b61743750e4",
+		"_postman_id": "93f6a5eb-7167-4c49-9139-863a9abaaf31",
 		"name": "CaldAR",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -453,6 +453,130 @@
 							"port": "3000",
 							"path": [
 								"boilersTypes",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Customers - Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/customers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customers - Get One By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/customers/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customers",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customers - Delete One By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/customers/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customers",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customers - Update One By Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"id\": 12,\r\n    \"customerType\": \"Business\",\r\n    \"email\": \"imccuaigb@1plala.or.jp\",\r\n    \"buildings\":10,\r\n    \"fiscal_address\": \"33 Darwin Avenue\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/customers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer - Create New",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 25,\r\n    \"customerType\": \"Business\",\r\n    \"email\": \"imccuaigb@1plala.or.jp\",\r\n    \"buildings\":10,\r\n    \"fiscal_address\": \"33 Darwin Avenue\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/customers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customers",
 								""
 							]
 						}
