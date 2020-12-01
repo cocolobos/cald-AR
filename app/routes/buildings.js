@@ -12,6 +12,4 @@ router.put("/:id", building.update);
 
 router.delete("/:id", building.delete);
 
-
-
 module.exports = router;
