@@ -105,7 +105,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
   Customer.findOneAndRemove({ id }, { useFindAndModify: false })
-  // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line no-unused-vars
     .then((data) => {
       res.send({ message: " Customer was removed succesfully." });
     })

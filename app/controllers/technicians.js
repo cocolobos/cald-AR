@@ -107,7 +107,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
   Technicians.findOneAndRemove({ id }, { useFindAndModify: false })
-  // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line no-unused-vars
     .then((data) => res.send({ message: "Technician removed successfully" }))
     // eslint-disable-next-line no-unused-vars
     .catch((err) => {

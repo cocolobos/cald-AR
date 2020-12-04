@@ -98,7 +98,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
   Building.findOneAndRemove({ id }, { useFindAndModify: false })
-  // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line no-unused-vars
     .then((data) => res.send({ message: "Building was removed." }))
     // eslint-disable-next-line no-unused-vars
     .catch((err) => {

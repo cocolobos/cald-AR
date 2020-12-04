@@ -101,7 +101,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
   Appointment.findOneAndRemove({ id }, { useFindAndModify: false })
-  // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line no-unused-vars
     .then((data) =>
       res.send({ message: "Appointment was removed successfully." })
     )

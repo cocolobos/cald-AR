@@ -95,7 +95,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
   Boilers.findOneAndRemove({ id }, { useFindAndModify: false })
-  // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line no-unused-vars
     .then((data) => res.send({ message: "Boiler was remove successfully" }))
     // eslint-disable-next-line no-unused-vars
     .catch((err) => {
