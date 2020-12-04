@@ -1,5 +1,5 @@
 const building = require("../controllers/buildings-functions");
-var router = require ("express").Router();
+var router = require("express").Router();
 
 router.get("/", building.findAll);
 router.get("/:id", building.findOne);

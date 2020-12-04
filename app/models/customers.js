@@ -26,6 +26,6 @@ module.exports = (mongoose) => {
       },
       { timestamps: true }
     )
-  )
-  return customers
+  );
+  return customers;
 };

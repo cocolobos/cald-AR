@@ -94,6 +94,7 @@ exports.update = (req, res) => {
       } else res.send({ message: "Customer was updated successfully." });
       res.send(data);
     })
+    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
         message: "Error updating Customer with id =" + id,
@@ -104,9 +105,11 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
   Customer.findOneAndRemove({ id }, { useFindAndModify: false })
+    // eslint-disable-next-line no-unused-vars
     .then((data) => {
       res.send({ message: " Customer was removed succesfully." });
     })
+    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
         message: "Error removing Customer with id=" + id,
