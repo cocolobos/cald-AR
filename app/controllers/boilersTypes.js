@@ -23,6 +23,7 @@ exports.create = (req, res) => {
     .then((data) => {
       res.send(data);
     })
+    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
         message: "Some error ocurred while creating new Boiler Type",
@@ -35,6 +36,7 @@ exports.findAll = (req, res) => {
     .then((data) => {
       res.send(data);
     })
+    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
         message: "Some error ocurred while finding Boiler Type",
@@ -52,6 +54,7 @@ exports.findOne = (req, res) => {
       }
       res.send(data);
     })
+    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
         message: "Some error ocurred while finding Boiler Type by ID",
@@ -84,6 +87,7 @@ exports.update = (req, res) => {
         });
       } else res.send({ message: "Boiler Type was update successfully" });
     })
+    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
         message: "Some error ocurred while updating Boiler Type",
@@ -94,7 +98,9 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
   BoilerType.findOneAndRemove({ id }, { useFindAndModify: false })
+  // eslint-disable-next-line no-unused-vars
     .then((data) => res.send({ message: "Boiler Type removed successfully" }))
+    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
         message: "Some error ocurred while deleting Boiler Type",

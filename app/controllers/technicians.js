@@ -30,6 +30,7 @@ exports.create = (req, res) => {
     .then((data) => {
       res.send(data);
     })
+    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
         message: "Some error ocurred while creating new Technician",
@@ -42,6 +43,7 @@ exports.findAll = (req, res) => {
     .then((data) => {
       res.send(data);
     })
+    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
         message: "Some error ocurred while finding Technicians",
@@ -59,6 +61,7 @@ exports.findOne = (req, res) => {
       }
       res.send(data);
     })
+    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
         message: "Some error ocurred while finding Technician by ID",
@@ -93,6 +96,7 @@ exports.update = (req, res) => {
         });
       } else res.send({ message: "Technician was update successfully" });
     })
+    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
         message: "Some error ocurred while updating Technician",
@@ -103,7 +107,9 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
   Technicians.findOneAndRemove({ id }, { useFindAndModify: false })
+  // eslint-disable-next-line no-unused-vars
     .then((data) => res.send({ message: "Technician removed successfully" }))
+    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
         message: "Some error ocurred while deleting Technician",

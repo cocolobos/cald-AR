@@ -90,6 +90,7 @@ exports.update = (req, res) => {
       } else res.send({ message: "Appointment was updated successfully." });
       res.send(data);
     })
+    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
         message: "Some error ocurred while updating appointment with id=" + id,
@@ -100,9 +101,11 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
   Appointment.findOneAndRemove({ id }, { useFindAndModify: false })
+  // eslint-disable-next-line no-unused-vars
     .then((data) =>
       res.send({ message: "Appointment was removed successfully." })
     )
+    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
         message: "Error removing appointment with id=" + id,
