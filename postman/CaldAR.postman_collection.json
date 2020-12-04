@@ -1,871 +1,724 @@
 {
-	"info": {
-		"_postman_id": "4a6928d8-3c6f-4032-8c2b-ce88d29a8837",
-		"name": "CaldAR",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Appointment",
-			"item": [
-				{
-					"name": "Create an Appointment",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"issue\": \"water lose\",\r\n    \"date\": \"11/28/20\",\r\n    \"estimatedTime\": 6\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/appointments/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"appointments",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get all Appointments",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/appointments/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"appointments",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get one Appointment",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/appointments/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"appointments",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update an Appointment",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"issue\": \"oil lose\",\r\n    \"date\": \"11/28/20\",\r\n    \"estimatedTime\": 6\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/appointments/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"appointments",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete an Appointment",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/appointments/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"appointments",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Technicians",
-			"item": [
-				{
-					"name": "Technicians - Get One By Id",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/technicians/3",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"technicians",
-								"3"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Technicians - Update By Id",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n        \"id\": 3,\r\n        \"email\": \"jlopez@gmail.com\",\r\n        \"typeIds\": 3,\r\n        \"skillsId\": 1,\r\n        \"daily_capacity\": 2,\r\n        \"firstName\": \"jorge\",\r\n        \"hour_rate\": 45.95,\r\n        \"lastName\": \"lopez\"\r\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/technicians/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"technicians",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Technicians - Delete By Id",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/technicians",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"technicians"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Technicians - Get All",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/technicians/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"technicians",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Technicians - Create new",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 3,\r\n    \"firstName\": \"nicolas\",\r\n    \"lastName\": \"lobos\",\r\n    \"email\": \"nlobos@gmail.com\",\r\n    \"typeIds\": 2,\r\n    \"skillsId\": 1,\r\n    \"hour_rate\": 24.95,\r\n    \"daily_capacity\": 3\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/technicians",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"technicians"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Boilers Types",
-			"item": [
-				{
-					"name": "Boilers Type - Get All",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/boilersTypes/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"boilersTypes",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Boilers Type - Get One By Id",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/boilersTypes/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"boilersTypes",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Boilers Type - Delete One By Id",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/boilersTypes/3",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"boilersTypes",
-								"3"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Boilers Type - Update One By Id",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 3,\r\n    \"skillsId\": 2,\r\n    \"descriptions\": \"lorem ipsum\",\r\n    \"stock\": 15\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/boilersTypes/2",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"boilersTypes",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Boilers Type - Create New",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"skillsId\": 3,\r\n    \"descriptions\": \"ipsum\",\r\n    \"stock\": 10\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/boilersTypes/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"boilersTypes",
-								""
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Customers",
-			"item": [
-				{
-					"name": "Customers - Get All",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/customers/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"customers",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Customers - Get One By Id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/customers/12",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"customers",
-								"12"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Customers - Delete One By Id",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/customers/12",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"customers",
-								"12"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Customers - Update One By Id",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": " {\r\n    \"id\": 12,\r\n    \"customerType\": \"Business\",\r\n    \"email\": \"imccuaigb@1plala.or.jp\",\r\n    \"buildings\":10,\r\n    \"fiscal_address\": \"33 Darwin Avenue\"\r\n  }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/customers/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"customers",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Customer - Create New",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 25,\r\n    \"customerType\": \"Business\",\r\n    \"email\": \"imccuaigb@1plala.or.jp\",\r\n    \"buildings\":10,\r\n    \"fiscal_address\": \"33 Darwin Avenue\"\r\n  }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/customers/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"customers",
-								""
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Boilers",
-			"item": [
-				{
-					"name": "Boilers - Get one boiler by Id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/boilers/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"boilers",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Boilers - Get All",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/boilers",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"boilers"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Boilers - Delete one boiler by Id",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/boilers/2",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"boilers",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Boilers - Create a new boiler",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n        \"id\": 1,\r\n        \"typeId\": 79,\r\n        \"maintaince_rate\": \"yearly\",\r\n        \"hour_maintaince_cost\": \"$30.22\",\r\n        \"hour_eventual_cost\": \"$58.73\"\r\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/boilers/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"boilers",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Boilers - Update a boiler by Id",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"_id\": \"5fc5ad3a85fc5704944f2b39\",\r\n    \"id\": 51,\r\n    \"typeId\": 91,\r\n    \"maintaince_rate\": \"yearly\",\r\n    \"hour_maintaince_cost\": \"$30.22\",\r\n    \"hour_eventual_cost\": \"$48.73\",\r\n    \"createdAt\": \"2020-12-01T02:40:58.625Z\",\r\n    \"updatedAt\": \"2020-12-01T02:40:58.625Z\",\r\n    \"__v\": 0\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/boilers/51",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"boilers",
-								"51"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
+  "info": {
+    "_postman_id": "4a6928d8-3c6f-4032-8c2b-ce88d29a8837",
+    "name": "CaldAR",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Appointment",
+      "item": [
+        {
+          "name": "Create an Appointment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 1,\r\n    \"issue\": \"water lose\",\r\n    \"date\": \"11/28/20\",\r\n    \"estimatedTime\": 6\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/appointments/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["appointments", ""]
+            }
+          },
+          "response": []
         },
         {
-			"name": "Buildings",
-			"item": [
-				{
-					"name": "findAll",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/buildings/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"buildings",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "create",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "id",
-									"value": "11",
-									"type": "text"
-								},
-								{
-									"key": "address",
-									"value": "1321 asdas",
-									"type": "text"
-								},
-								{
-									"key": "boilerID",
-									"value": "2",
-									"type": "text"
-								},
-								{
-									"key": "fullname",
-									"value": "asdsad",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "1231231",
-									"type": "text"
-								}
-							],
-							"options": {
-								"urlencoded": {}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/buildings/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"buildings",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "findOne",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/buildings/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"buildings",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "deleteOne",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/buildings/11",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"buildings",
-								"11"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "New Request",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "id",
-									"value": "122",
-									"type": "text"
-								},
-								{
-									"key": "address",
-									"value": "adasd qweqwe",
-									"type": "text"
-								}
-							],
-							"options": {
-								"urlencoded": {}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/buildings/3",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"buildings",
-								"3"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		}
-	],
-	"protocolProfileBehavior": {}
+          "name": "Get all Appointments",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/appointments/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["appointments", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get one Appointment",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/appointments/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["appointments", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update an Appointment",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 1,\r\n    \"issue\": \"oil lose\",\r\n    \"date\": \"11/28/20\",\r\n    \"estimatedTime\": 6\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/appointments/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["appointments", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete an Appointment",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/appointments/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["appointments", "1"]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "Technicians",
+      "item": [
+        {
+          "name": "Technicians - Get One By Id",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/technicians/3",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["technicians", "3"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Technicians - Update By Id",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n        \"id\": 3,\r\n        \"email\": \"jlopez@gmail.com\",\r\n        \"typeIds\": 3,\r\n        \"skillsId\": 1,\r\n        \"daily_capacity\": 2,\r\n        \"firstName\": \"jorge\",\r\n        \"hour_rate\": 45.95,\r\n        \"lastName\": \"lopez\"\r\n    }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/technicians/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["technicians", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Technicians - Delete By Id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/technicians",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["technicians"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Technicians - Get All",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/technicians/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["technicians", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Technicians - Create new",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 3,\r\n    \"firstName\": \"nicolas\",\r\n    \"lastName\": \"lobos\",\r\n    \"email\": \"nlobos@gmail.com\",\r\n    \"typeIds\": 2,\r\n    \"skillsId\": 1,\r\n    \"hour_rate\": 24.95,\r\n    \"daily_capacity\": 3\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/technicians",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["technicians"]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "Boilers Types",
+      "item": [
+        {
+          "name": "Boilers Type - Get All",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/boilersTypes/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["boilersTypes", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Boilers Type - Get One By Id",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/boilersTypes/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["boilersTypes", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Boilers Type - Delete One By Id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/boilersTypes/3",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["boilersTypes", "3"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Boilers Type - Update One By Id",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 3,\r\n    \"skillsId\": 2,\r\n    \"descriptions\": \"lorem ipsum\",\r\n    \"stock\": 15\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/boilersTypes/2",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["boilersTypes", "2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Boilers Type - Create New",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 1,\r\n    \"skillsId\": 3,\r\n    \"descriptions\": \"ipsum\",\r\n    \"stock\": 10\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/boilersTypes/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["boilersTypes", ""]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "Customers - Get All",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/customers/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["customers", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Customers - Get One By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/customers/12",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["customers", "12"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Customers - Delete One By Id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/customers/12",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["customers", "12"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Customers - Update One By Id",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": " {\r\n    \"id\": 12,\r\n    \"customerType\": \"Business\",\r\n    \"email\": \"imccuaigb@1plala.or.jp\",\r\n    \"buildings\":10,\r\n    \"fiscal_address\": \"33 Darwin Avenue\"\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/customers/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["customers", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Customer - Create New",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 25,\r\n    \"customerType\": \"Business\",\r\n    \"email\": \"imccuaigb@1plala.or.jp\",\r\n    \"buildings\":10,\r\n    \"fiscal_address\": \"33 Darwin Avenue\"\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/customers/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["customers", ""]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "Boilers",
+      "item": [
+        {
+          "name": "Boilers - Get one boiler by Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/boilers/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["boilers", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Boilers - Get All",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/boilers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["boilers"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Boilers - Delete one boiler by Id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/boilers/2",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["boilers", "2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Boilers - Create a new boiler",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n        \"id\": 1,\r\n        \"typeId\": 79,\r\n        \"maintaince_rate\": \"yearly\",\r\n        \"hour_maintaince_cost\": \"$30.22\",\r\n        \"hour_eventual_cost\": \"$58.73\"\r\n    }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/boilers/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["boilers", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Boilers - Update a boiler by Id",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"_id\": \"5fc5ad3a85fc5704944f2b39\",\r\n    \"id\": 51,\r\n    \"typeId\": 91,\r\n    \"maintaince_rate\": \"yearly\",\r\n    \"hour_maintaince_cost\": \"$30.22\",\r\n    \"hour_eventual_cost\": \"$48.73\",\r\n    \"createdAt\": \"2020-12-01T02:40:58.625Z\",\r\n    \"updatedAt\": \"2020-12-01T02:40:58.625Z\",\r\n    \"__v\": 0\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/boilers/51",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["boilers", "51"]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "Buildings",
+      "item": [
+        {
+          "name": "findAll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/buildings/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["buildings", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "id",
+                  "value": "11",
+                  "type": "text"
+                },
+                {
+                  "key": "address",
+                  "value": "1321 asdas",
+                  "type": "text"
+                },
+                {
+                  "key": "boilerID",
+                  "value": "2",
+                  "type": "text"
+                },
+                {
+                  "key": "fullname",
+                  "value": "asdsad",
+                  "type": "text"
+                },
+                {
+                  "key": "phone",
+                  "value": "1231231",
+                  "type": "text"
+                }
+              ],
+              "options": {
+                "urlencoded": {}
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/buildings/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["buildings", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "findOne",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/buildings/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["buildings", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteOne",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/buildings/11",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["buildings", "11"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "id",
+                  "value": "122",
+                  "type": "text"
+                },
+                {
+                  "key": "address",
+                  "value": "adasd qweqwe",
+                  "type": "text"
+                }
+              ],
+              "options": {
+                "urlencoded": {}
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/buildings/3",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["buildings", "3"]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    }
+  ],
+  "protocolProfileBehavior": {}
 }
