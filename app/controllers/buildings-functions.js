@@ -87,8 +87,7 @@ exports.update = (req, res) => {
         });
       } else res.send({ message: "Building was updated." });
     })
-    // eslint-disable-next-line no-unused-vars
-    .catch((err) => {
+    .catch(() => {
       res.status(500).send({
         message: "Can not update building id " + buildingId,
       });
@@ -98,10 +97,8 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
   Building.findOneAndRemove({ id }, { useFindAndModify: false })
-    // eslint-disable-next-line no-unused-vars
-    .then((data) => res.send({ message: "Building was removed." }))
-    // eslint-disable-next-line no-unused-vars
-    .catch((err) => {
+    .then(() => res.send({ message: "Building was removed." }))
+    .catch(() => {
       res.status(500).send({
         message: "Error removing building with id=" + id,
       });
