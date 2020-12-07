@@ -82,14 +82,30 @@ exports.update = (req, res) => {
       message: "Data to update can not be empty!",
     });
   }
-  if (
-    !req.body.id ||
-    !req.body.typeId ||
-    !req.body.maintaince_rate ||
-    !req.body.hour_maintaince_cost ||
-    !req.body.hour_eventual_cost
-  ) {
-    res.status(400).send({ message: "Content can not be empty!" });
+  // eslint-disable-next-line no-useless-escape
+  if (/^[\$]+[0-9]+(\.[0-9]{1,2})?$/.test(req.body.hour_maintaince_cost)) {
+    // eslint-disable-next-line no-useless-escape
+    if (/^[\$]+[0-9]+(\.[0-9]{1,2})?$/.test(req.body.hour_eventual_cost)) {
+      if (
+        !req.body.id ||
+        !req.body.typeId ||
+        !req.body.maintaince_rate ||
+        !req.body.hour_maintaince_cost ||
+        !req.body.hour_eventual_cost
+      ) {
+        res.status(400).send({ message: "Content can not be empty!" });
+        return;
+      }
+    } else {
+      res.status(400).send({
+        message: `The decimal number ${req.body.hour_eventual_cost} is incorrect, it must be preceded by the $ symbol and separated by .`,
+      });
+      return;
+    }
+  } else {
+    res.status(400).send({
+      message: `The decimal number ${req.body.hour_maintaince_cost} is incorrect, it must be preceded by the $ symbol and separated by .`,
+    });
     return;
   }
 
