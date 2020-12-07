@@ -15,11 +15,9 @@ exports.create = (req, res) => {
       return;
     }
   } else {
-    res
-      .status(400)
-      .send({
-        message: `The decimal number ${req.body.hour_maintaince_cost} is incorrect, it must be separated by "."`,
-      });
+    res.status(400).send({
+      message: `The decimal number ${req.body.hour_maintaince_cost} is incorrect, it must be separated by "."`,
+    });
     return;
   }
 
