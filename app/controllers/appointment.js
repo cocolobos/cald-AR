@@ -3,18 +3,23 @@ const Appointment = db.appointments;
 
 exports.create = (req, res) => {
   if (req.body.id.length <5) {
-    if (
-      !req.body.id ||
-      !req.body.issue ||
-      !req.body.date ||
-      !req.body.estimatedTime
-    ) {
-      res.status(400).send({ message: "Content can not be empty." });
-      return;
+    if (req.body.estimatedTime <9) {
+      if (
+        !req.body.id ||
+        !req.body.issue ||
+        !req.body.date ||
+        !req.body.estimatedTime
+      ) {
+        res.status(400).send({ message: "Content can not be empty." });
+        return;
+      }
+    } else {
+      res.status(409).send({ message: `${req.body.estimatedTime} cannot contain more than 4 characters.` });
+        return;
     }
   } else {
-    res.status(400).send({ message: "Id cannot contain more than 4 characters." });
-      return;
+    res.status(409).send({ message:  `${req.body.estimatedTime} cannot be more than 9 hours.` });
+        return;
   }
 
   const appointment = new Appointment({
