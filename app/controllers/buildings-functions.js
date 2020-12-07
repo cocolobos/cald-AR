@@ -2,9 +2,9 @@ const db = require("../models");
 const Building = db.buildings;
 
 exports.create = (req, res) => {
-  if (/^(?=.{6,})([a-zA-Z]+\s{1}[a-zA-Z]+)$/.test(req.body.fullname)){
-    if (/^(?=.{7,})([0-9])+$/.test(req.body.phone)){
-      if (/^(?=.{5,})([a-zA-Z0-9]+\s{1}[0-9]+)$/.test(req.body.address)){
+  if (/^(?=.{6,})([a-zA-Z]+\s{1}[a-zA-Z]+)$/.test(req.body.fullname)) {
+    if (/^(?=.{7,})([0-9])+$/.test(req.body.phone)) {
+      if (/^(?=.{5,})([a-zA-Z0-9]+\s{1}[0-9]+)$/.test(req.body.address)) {
         if (
           !req.body.id ||
           !req.body.address ||
@@ -16,18 +16,23 @@ exports.create = (req, res) => {
           return;
         }
       } else {
-        res.status(409).send({ message: `${req.body.address} Is not a valid address` });
+        res
+          .status(409)
+          .send({ message: `${req.body.address} Is not a valid address` });
         return;
       }
     } else {
-      res.status(409).send({ message: `${req.body.phone} Is not a valid phone number` });
+      res
+        .status(409)
+        .send({ message: `${req.body.phone} Is not a valid phone number` });
       return;
     }
   } else {
-    res.status(409).send({ message: `${req.body.fullname} Is not a valid name` });
+    res
+      .status(409)
+      .send({ message: `${req.body.fullname} Is not a valid name` });
     return;
   }
-  
 
   const building = new Building({
     id: req.body.id,
@@ -79,9 +84,15 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  if (!req.body.fullname || /^(?=.{6,})([a-zA-Z]+\s{1}[a-zA-Z]+)$/.test(req.body.fullname)){
-    if (!req.body.phone || /^(?=.{7,})([0-9])+$/.test(req.body.phone)){
-      if (!req.body.address || /^(?=.{5,})([a-zA-Z0-9]+\s{1}[0-9]+)$/.test(req.body.address)){
+  if (
+    !req.body.fullname ||
+    /^(?=.{6,})([a-zA-Z]+\s{1}[a-zA-Z]+)$/.test(req.body.fullname)
+  ) {
+    if (!req.body.phone || /^(?=.{7,})([0-9])+$/.test(req.body.phone)) {
+      if (
+        !req.body.address ||
+        /^(?=.{5,})([a-zA-Z0-9]+\s{1}[0-9]+)$/.test(req.body.address)
+      ) {
         if (
           !req.body.address &&
           !req.body.boilerID &&
@@ -91,17 +102,22 @@ exports.update = (req, res) => {
           res.status(400).send({ message: "Empty data, please fill it." });
           return;
         }
-        
       } else {
-        res.status(409).send({ message: `${req.body.address} Is not a valid address` });
+        res
+          .status(409)
+          .send({ message: `${req.body.address} Is not a valid address` });
         return;
       }
     } else {
-      res.status(409).send({ message: `${req.body.phone} Is not a valid phone number` });
+      res
+        .status(409)
+        .send({ message: `${req.body.phone} Is not a valid phone number` });
       return;
     }
   } else {
-    res.status(409).send({ message: `${req.body.fullname} Is not a valid name` });
+    res
+      .status(409)
+      .send({ message: `${req.body.fullname} Is not a valid name` });
     return;
   }
 
