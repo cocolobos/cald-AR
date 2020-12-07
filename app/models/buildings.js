@@ -6,6 +6,7 @@ module.exports = (mongoose) => {
         id: {
           type: Number,
           require: true,
+          unique: true,
         },
         address: {
           type: String,
