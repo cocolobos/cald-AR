@@ -14,6 +14,7 @@ module.exports = (mongoose) => {
         },
         maintaince_rate: {
           type: String,
+          enum: ['yearly', 'quarterly', 'monthly'],
           required: true,
         },
         hour_maintaince_cost: {

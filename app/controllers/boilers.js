@@ -18,19 +18,15 @@ exports.create = (req, res) => {
         return;
       }
     } else {
-      res
-        .status(400)
-        .send({
-          message: `The decimal number ${req.body.hour_eventual_cost} is incorrect, it must be preceded by the $ symbol and separated by .`,
-        });
+      res.status(400).send({
+        message: `The decimal number ${req.body.hour_eventual_cost} is incorrect, it must be preceded by the $ symbol and separated by .`,
+      });
       return;
     }
   } else {
-    res
-      .status(400)
-      .send({
-        message: `The decimal number ${req.body.hour_maintaince_cost} is incorrect, it must be preceded by the $ symbol and separated by .`,
-      });
+    res.status(400).send({
+      message: `The decimal number ${req.body.hour_maintaince_cost} is incorrect, it must be preceded by the $ symbol and separated by .`,
+    });
     return;
   }
 
