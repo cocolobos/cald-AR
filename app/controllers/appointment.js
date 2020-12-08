@@ -14,7 +14,7 @@ exports.create = (req, res) => {
         return;
       }
     } else {
-      res.status(409).send({ message: `${req.body.estimatedTime} cannot contain more than 4 characters.` });
+      res.status(409).send({ message: `${req.body.id} cannot contain more than 4 characters.` });
         return;
     }
   } else {
@@ -91,7 +91,7 @@ exports.update = (req, res) => {
         return;
       }
     } else {
-      res.status(409).send({ message: `${req.body.estimatedTime} cannot contain more than 4 characters.` });
+      res.status(409).send({ message: `${req.body.id} cannot contain more than 4 characters.` });
         return;
     }
   } else {
