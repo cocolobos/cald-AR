@@ -2,8 +2,8 @@ const db = require("../models");
 const Appointment = db.appointments;
 
 exports.create = (req, res) => {
-  if (req.body.id.length <5) {
-    if (req.body.estimatedTime <9) {
+  if (req.body.estimatedTime <9) {
+    if (req.body.id < 9999) {
       if (
         !req.body.id ||
         !req.body.issue ||
@@ -14,12 +14,12 @@ exports.create = (req, res) => {
         return;
       }
     } else {
-      res.status(409).send({ message: `${req.body.id} cannot contain more than 4 characters.` });
+      res.status(409).send({ message:  "Id cannot contain more than 4 characters.`"});
         return;
-    }
+    } 
   } else {
     res.status(409).send({ message:  `${req.body.estimatedTime} cannot be more than 9 hours.` });
-        return;
+      return;
   }
 
   const appointment = new Appointment({
@@ -79,8 +79,8 @@ exports.update = (req, res) => {
     });
   }
 
-  if (req.body.id.length <5) {
-    if (req.body.estimatedTime <9) {
+  if (req.body.estimatedTime <9) {
+    if (req.body.id < 9999) {
       if (
         !req.body.id ||
         !req.body.issue ||
@@ -91,12 +91,12 @@ exports.update = (req, res) => {
         return;
       }
     } else {
-      res.status(409).send({ message: `${req.body.id} cannot contain more than 4 characters.` });
+      res.status(409).send({ message:  "Id cannot contain more than 4 characters.`"});
         return;
-    }
+    } 
   } else {
     res.status(409).send({ message:  `${req.body.estimatedTime} cannot be more than 9 hours.` });
-        return;
+      return;
   }
 
   const id = req.params.id;
