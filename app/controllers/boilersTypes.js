@@ -17,7 +17,6 @@ exports.create = (req, res) => {
     });
     return;
   }
-
   if (req.body.skillsId > 10 || req.body.skillsId <= 0) {
     res.status(409).send({
       message: ` ${req.body.skillsId} is not a number between 1 and 10 `,
@@ -91,7 +90,6 @@ exports.update = (req, res) => {
     });
     return;
   }
-
   if (req.body.skillsId > 10 || req.body.skillsId <= 0) {
     res.status(409).send({
       message: ` ${req.body.skillsId} is not a number between 1 and 10 `,
