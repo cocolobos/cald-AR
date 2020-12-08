@@ -2,14 +2,28 @@ const db = require("../models");
 const Customer = db.customers;
 
 exports.create = (req, res) => {
-  if (
-    !req.body.id ||
-    !req.body.customerType ||
-    !req.body.email ||
-    !req.body.buildings ||
-    !req.body.fiscal_address
-  ) {
-    res.status(400).send({ message: "Content can not be empty!" });
+  if (/^(?=.{5,})([a-zA-Z0-9]+\s{1}[0-9]+)$/.test(req.body.fiscal_address)) {
+    if (/^[a-z0-9A-Z._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/.test(req.body.email)) {
+      if (
+        !req.body.id ||
+        !req.body.customerType ||
+        !req.body.email ||
+        !req.body.buildings ||
+        !req.body.fiscal_address
+      ) {
+        res.status(400).send({ message: "Content can not be empty!" });
+        return;
+      }
+    } else {
+      res
+        .status(409)
+        .send({ message: ` ${req.body.email} is not a valid Email ` });
+      return;
+    }
+  } else {
+    res
+      .status(409)
+      .send({ message: ` ${req.body.fiscal_address} is not a valid Address ` });
     return;
   }
 
@@ -66,20 +80,28 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  if (!req.body) {
-    return res.status(400).send({
-      message: "Data to update can not be empty!",
-    });
-  }
-
-  if (
-    !req.body.id ||
-    !req.body.customerType ||
-    !req.body.email ||
-    !req.body.buildings ||
-    !req.body.fiscal_address
-  ) {
-    res.status(400).send({ message: "Content can not be empty!" });
+  if (/^(?=.{5,})([a-zA-Z0-9]+\s{1}[0-9]+)$/.test(req.body.fiscal_address)) {
+    if (/^[a-z0-9A-Z._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/.test(req.body.email)) {
+      if (
+        !req.body.id ||
+        !req.body.customerType ||
+        !req.body.email ||
+        !req.body.buildings ||
+        !req.body.fiscal_address
+      ) {
+        res.status(400).send({ message: "Data to update can not be empty!" });
+        return;
+      }
+    } else {
+      res
+        .status(409)
+        .send({ message: ` ${req.body.email} is not a valid Email ` });
+      return;
+    }
+  } else {
+    res
+      .status(409)
+      .send({ message: ` ${req.body.fiscal_address} is not a valid Address ` });
     return;
   }
 
