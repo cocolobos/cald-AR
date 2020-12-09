@@ -2,10 +2,10 @@ const db = require("../models");
 const Technicians = db.technicians;
 
 exports.create = (req, res) => {
-  if (/^[a-z0-9A-Z._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/.test(req.body.email)){
-    if(/^(?=.{3,})([a-zA-Z]+[a-zA-Z]+)$/.test(req.body.firstName)){
-      if(/^(?=.{3,})([a-zA-Z]+[a-zA-Z]+)$/.test(req.body.lastName)){
-        if(
+  if (/^[a-z0-9A-Z._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/.test(req.body.email)) {
+    if (/^(?=.{3,})([a-zA-Z]+[a-zA-Z]+)$/.test(req.body.firstName)) {
+      if (/^(?=.{3,})([a-zA-Z]+[a-zA-Z]+)$/.test(req.body.lastName)) {
+        if (
           !req.body.id ||
           !req.body.firstName ||
           !req.body.lastName ||
@@ -14,21 +14,31 @@ exports.create = (req, res) => {
           !req.body.skillsId ||
           !req.body.hour_rate ||
           !req.body.daily_capacity
-        ){
+        ) {
           res.status(400).send({ message: "Content can not be empty" });
           return;
         }
       } else {
-        res.status(409).send({ message: `${req.body.lastName} Must contain at least 3 character .` });
-          return;
+        res
+          .status(409)
+          .send({
+            message: `${req.body.lastName} Must contain at least 3 character .`,
+          });
+        return;
       }
     } else {
-      res.status(409).send({ message: `${req.body.firstName} Must contain at least 3 character .` });
-        return;
+      res
+        .status(409)
+        .send({
+          message: `${req.body.firstName} Must contain at least 3 character .`,
+        });
+      return;
     }
   } else {
-    res.status(409).send({ message: `${req.body.email} Must have a valid email format .` });
-      return;
+    res
+      .status(409)
+      .send({ message: `${req.body.email} Must have a valid email format .` });
+    return;
   }
 
   const technician = new Technicians({
@@ -86,10 +96,10 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  if (/^[a-z0-9A-Z._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/.test(req.body.email)){
-    if(/^(?=.{3,})([a-zA-Z]+[a-zA-Z]+)$/.test(req.body.firstName)){
-      if(/^(?=.{3,})([a-zA-Z]+[a-zA-Z]+)$/.test(req.body.lastName)){
-        if(
+  if (/^[a-z0-9A-Z._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/.test(req.body.email)) {
+    if (/^(?=.{3,})([a-zA-Z]+[a-zA-Z]+)$/.test(req.body.firstName)) {
+      if (/^(?=.{3,})([a-zA-Z]+[a-zA-Z]+)$/.test(req.body.lastName)) {
+        if (
           !req.body.id ||
           !req.body.firstName ||
           !req.body.lastName ||
@@ -98,21 +108,31 @@ exports.update = (req, res) => {
           !req.body.skillsId ||
           !req.body.hour_rate ||
           !req.body.daily_capacity
-        ){
+        ) {
           res.status(400).send({ message: "Data to update can not be empty" });
           return;
         }
       } else {
-        res.status(409).send({ message: `${req.body.lastName} Must contain at least 3 character .` });
-          return;
+        res
+          .status(409)
+          .send({
+            message: `${req.body.lastName} Must contain at least 3 character .`,
+          });
+        return;
       }
     } else {
-      res.status(409).send({ message: `${req.body.firstName} Must contain at least 3 character .` });
-        return;
+      res
+        .status(409)
+        .send({
+          message: `${req.body.firstName} Must contain at least 3 character .`,
+        });
+      return;
     }
   } else {
-    res.status(409).send({ message: `${req.body.email} Must have a valid email format .` });
-      return;
+    res
+      .status(409)
+      .send({ message: `${req.body.email} Must have a valid email format .` });
+    return;
   }
   const id = req.params.id;
   Technicians.findOneAndUpdate({ id }, req.body, { useFindAndModify: false })
