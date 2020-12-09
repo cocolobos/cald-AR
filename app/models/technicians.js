@@ -6,6 +6,7 @@ module.exports = (mongoose) => {
         id: {
           type: Number,
           require: true,
+          unique: true,
         },
         firstName: {
           type: String,
@@ -18,10 +19,12 @@ module.exports = (mongoose) => {
         email: {
           type: String,
           require: true,
+          unique: true,
         },
         typeIds: {
           type: Number,
           require: true,
+          enum: [1,2,3],
         },
         skillsId: {
           type: Number,
@@ -34,6 +37,8 @@ module.exports = (mongoose) => {
         daily_capacity: {
           type: Number,
           require: true,
+          min: 0,
+          max: 8,
         },
       },
       { timestamps: true }
