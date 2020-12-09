@@ -2,13 +2,25 @@ const db = require("../models");
 const BoilerType = db.boilersTypes;
 
 exports.create = (req, res) => {
-  if (
-    !req.body.id ||
-    !req.body.skillsId ||
-    !req.body.descriptions ||
-    !req.body.stock
-  ) {
-    res.status(400).send({ message: "Content can not be empty" });
+  if (req.body.stock > 20 || req.body.stock <= 0) {
+    if (
+      !req.body.id ||
+      !req.body.skillsId ||
+      !req.body.descriptions ||
+      !req.body.stock
+    ) {
+      res.status(400).send({ message: "Content can not be empty" });
+      return;
+    }
+    res.status(409).send({
+      message: ` ${req.body.stock} is not a number between 1 and 20 `,
+    });
+    return;
+  }
+  if (req.body.skillsId > 10 || req.body.skillsId <= 0) {
+    res.status(409).send({
+      message: ` ${req.body.skillsId} is not a number between 1 and 10 `,
+    });
     return;
   }
   const boilerType = new BoilerType({
@@ -63,20 +75,28 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  if (!req.body) {
-    return res.status(400).send({
-      message: "Data to update can not be empty",
+  if (req.body.stock > 20 || req.body.stock <= 0) {
+    if (
+      !req.body.id ||
+      !req.body.skillsId ||
+      !req.body.descriptions ||
+      !req.body.stock
+    ) {
+      res.status(400).send({ message: "Content can not be empty" });
+      return;
+    }
+    res.status(409).send({
+      message: ` ${req.body.stock} is not a number between 1 and 20 `,
     });
-  }
-  if (
-    !req.body.id ||
-    !req.body.skillsId ||
-    !req.body.descriptions ||
-    !req.body.stock
-  ) {
-    res.status(400).send({ message: "Content can not be empty" });
     return;
   }
+  if (req.body.skillsId > 10 || req.body.skillsId <= 0) {
+    res.status(409).send({
+      message: ` ${req.body.skillsId} is not a number between 1 and 10 `,
+    });
+    return;
+  }
+
   const id = req.params.id;
 
   BoilerType.findOneAndUpdate({ id }, req.body, { useFindAndModify: false })
