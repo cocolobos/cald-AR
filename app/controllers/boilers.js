@@ -2,7 +2,6 @@ const db = require("../models");
 const Boilers = db.boilers;
 
 exports.create = (req, res) => {
-  console.log("body", req);
   // eslint-disable-next-line no-useless-escape
   if (/^[\$]+[0-9]+(\.[0-9]{1,2})?$/.test(req.body.hour_maintaince_cost)) {
     // eslint-disable-next-line no-useless-escape
@@ -49,6 +48,7 @@ exports.create = (req, res) => {
       });
     });
 };
+
 exports.findAll = (req, res) => {
   Boilers.find({})
     .then((data) => {
@@ -60,6 +60,7 @@ exports.findAll = (req, res) => {
       });
     });
 };
+
 exports.findOne = (req, res) => {
   Boilers.findOne({ id: req.params.id })
     .then((data) => {
@@ -76,6 +77,7 @@ exports.findOne = (req, res) => {
       });
     });
 };
+
 exports.update = (req, res) => {
   if (!req.body) {
     return res.status(400).send({
@@ -125,6 +127,7 @@ exports.update = (req, res) => {
       });
     });
 };
+
 exports.delete = (req, res) => {
   const id = req.params.id;
   Boilers.findOneAndRemove({ id }, { useFindAndModify: false })
