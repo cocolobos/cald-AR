@@ -6,6 +6,7 @@ module.exports = (mongoose) => {
         id: {
           type: Number,
           required: true,
+          unique: true,
         },
         typeId: {
           type: Number,
@@ -13,6 +14,7 @@ module.exports = (mongoose) => {
         },
         maintaince_rate: {
           type: String,
+          enum: ["yearly", "quarterly", "monthly"],
           required: true,
         },
         hour_maintaince_cost: {
