@@ -16,7 +16,7 @@ exports.create = (req, res) => {
     } else {
       res.status(409).send({ message:  "Id cannot contain more than 4 characters.`"});
         return;
-    } 
+    }
   } else {
     res.status(409).send({ message:  `${req.body.estimatedTime} cannot be more than 9 hours.` });
       return;
