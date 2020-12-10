@@ -2,14 +2,35 @@ const db = require("../models");
 const Building = db.buildings;
 
 exports.create = (req, res) => {
-  if (
-    !req.body.id ||
-    !req.body.address ||
-    !req.body.boilerID ||
-    !req.body.fullname ||
-    !req.body.phone
-  ) {
-    res.status(400).send({ message: "Data missing" });
+  if (/^(?=.{6,})([a-zA-Z]+\s{1}[a-zA-Z]+)$/.test(req.body.fullname)) {
+    if (/^(?=.{7,})([0-9])+$/.test(req.body.phone)) {
+      if (/^(?=.{5,})([a-zA-Z0-9]+\s{1}[0-9]+)$/.test(req.body.address)) {
+        if (
+          !req.body.id ||
+          !req.body.address ||
+          !req.body.boilerID ||
+          !req.body.fullname ||
+          !req.body.phone
+        ) {
+          res.status(400).send({ message: "Data missing" });
+          return;
+        }
+      } else {
+        res
+          .status(409)
+          .send({ message: `${req.body.address} Is not a valid address` });
+        return;
+      }
+    } else {
+      res
+        .status(409)
+        .send({ message: `${req.body.phone} Is not a valid phone number` });
+      return;
+    }
+  } else {
+    res
+      .status(409)
+      .send({ message: `${req.body.fullname} Is not a valid name` });
     return;
   }
 
@@ -64,12 +85,39 @@ exports.findOne = (req, res) => {
 
 exports.update = (req, res) => {
   if (
-    !req.body.address &&
-    !req.body.boilerID &&
-    !req.body.fullname &&
-    !req.body.phone
+    !req.body.fullname ||
+    /^(?=.{6,})([a-zA-Z]+\s{1}[a-zA-Z]+)$/.test(req.body.fullname)
   ) {
-    res.status(400).send({ message: "Some data is empty, please fill it." });
+    if (!req.body.phone || /^(?=.{7,})([0-9])+$/.test(req.body.phone)) {
+      if (
+        !req.body.address ||
+        /^(?=.{5,})([a-zA-Z0-9]+\s{1}[0-9]+)$/.test(req.body.address)
+      ) {
+        if (
+          !req.body.address &&
+          !req.body.boilerID &&
+          !req.body.fullname &&
+          !req.body.phone
+        ) {
+          res.status(400).send({ message: "Empty data, please fill it." });
+          return;
+        }
+      } else {
+        res
+          .status(409)
+          .send({ message: `${req.body.address} Is not a valid address` });
+        return;
+      }
+    } else {
+      res
+        .status(409)
+        .send({ message: `${req.body.phone} Is not a valid phone number` });
+      return;
+    }
+  } else {
+    res
+      .status(409)
+      .send({ message: `${req.body.fullname} Is not a valid name` });
     return;
   }
 
@@ -87,8 +135,7 @@ exports.update = (req, res) => {
         });
       } else res.send({ message: "Building was updated." });
     })
-    // eslint-disable-next-line no-unused-vars
-    .catch((err) => {
+    .catch(() => {
       res.status(500).send({
         message: "Can not update building id " + buildingId,
       });
@@ -98,10 +145,8 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
   Building.findOneAndRemove({ id }, { useFindAndModify: false })
-    // eslint-disable-next-line no-unused-vars
-    .then((data) => res.send({ message: "Building was removed." }))
-    // eslint-disable-next-line no-unused-vars
-    .catch((err) => {
+    .then(() => res.send({ message: "Building was removed." }))
+    .catch(() => {
       res.status(500).send({
         message: "Error removing building with id=" + id,
       });
