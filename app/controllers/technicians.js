@@ -3,17 +3,17 @@ const Technicians = db.technicians;
 
 exports.create = (req, res) => {
   if (/^[a-z0-9A-Z._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/.test(req.body.email)) {
-    if (/^(?=.{3,})([a-zA-Z]+[a-zA-Z]+)$/.test(req.body.firstName)) {
-      if (/^(?=.{3,})([a-zA-Z]+[a-zA-Z]+)$/.test(req.body.lastName)) {
+    if (/^(?=.{3,})([a-zA-Z]+[a-zA-Z]+)$/.test(req.body.fullName)) {
+      if (/^\d{7,}$/.test(req.body.phone)) {
         if (
-          !req.body.id ||
-          !req.body.firstName ||
-          !req.body.lastName ||
+          !req.body.number ||
+          !req.body.fullName ||
           !req.body.email ||
-          !req.body.typeIds ||
-          !req.body.skillsId ||
-          !req.body.hour_rate ||
-          !req.body.daily_capacity
+          !req.body.phone ||
+          !req.body.statusActive ||
+          !req.body.trained ||
+          !req.body.assignedClients ||
+          !req.body.spareHoursAvailable
         ) {
           res.status(400).send({ message: "Content can not be empty" });
           return;
@@ -22,7 +22,7 @@ exports.create = (req, res) => {
         res
           .status(409)
           .send({
-            message: `${req.body.lastName} Must contain at least 3 character .`,
+            message: `${req.body.fullName} Must contain at least 3 character .`,
           });
         return;
       }
@@ -30,7 +30,7 @@ exports.create = (req, res) => {
       res
         .status(409)
         .send({
-          message: `${req.body.firstName} Must contain at least 3 character .`,
+          message: `${req.body.phone} Must contain at least 7 character .`,
         });
       return;
     }
@@ -42,14 +42,14 @@ exports.create = (req, res) => {
   }
 
   const technician = new Technicians({
-    id: req.body.id,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
+    number: req.body.number,
+    fullName: req.body.fullName,
     email: req.body.email,
-    typeIds: req.body.typeIds,
-    skillsId: req.body.skillsId,
-    hourRate: req.body.hour_rate,
-    dailyCapacity: req.body.daily_capacity,
+    phone: req.body.phone,
+    statusActive: req.body.statusActive,
+    trained: req.body.trained,
+    assignedClients: req.body.assignedClients,
+    spareHoursAvailable: req.body.spareHoursAvailable,
   });
   technician
     .save(technician)
@@ -78,7 +78,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  Technicians.findOne({ id: req.params.id })
+  Technicians.findOne({ number: req.params.number })
     .then((data) => {
       if (!data) {
         return res.status(404).send({
@@ -97,17 +97,17 @@ exports.findOne = (req, res) => {
 
 exports.update = (req, res) => {
   if (/^[a-z0-9A-Z._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/.test(req.body.email)) {
-    if (/^(?=.{3,})([a-zA-Z]+[a-zA-Z]+)$/.test(req.body.firstName)) {
-      if (/^(?=.{3,})([a-zA-Z]+[a-zA-Z]+)$/.test(req.body.lastName)) {
+    if (/^(?=.{3,})([a-zA-Z]+[a-zA-Z]+)$/.test(req.body.fullName)) {
+      if (/^(?=.{3,})([a-zA-Z]+[a-zA-Z]+)$/.test(req.body.phone)) {
         if (
-          !req.body.id ||
-          !req.body.firstName ||
-          !req.body.lastName ||
+          !req.body.number ||
+          !req.body.fullName ||
           !req.body.email ||
-          !req.body.typeIds ||
-          !req.body.skillsId ||
-          !req.body.hour_rate ||
-          !req.body.daily_capacity
+          !req.body.phone ||
+          !req.body.statusActive ||
+          !req.body.trained ||
+          !req.body.assignedClients ||
+          !req.body.spareHoursAvailable
         ) {
           res.status(400).send({ message: "Data to update can not be empty" });
           return;
@@ -116,7 +116,7 @@ exports.update = (req, res) => {
         res
           .status(409)
           .send({
-            message: `${req.body.lastName} Must contain at least 3 character .`,
+            message: `${req.body.fullName} Must contain at least 3 character .`,
           });
         return;
       }
@@ -124,7 +124,7 @@ exports.update = (req, res) => {
       res
         .status(409)
         .send({
-          message: `${req.body.firstName} Must contain at least 3 character .`,
+          message: `${req.body.phone} Must contain at least 7 character .`,
         });
       return;
     }
@@ -134,8 +134,8 @@ exports.update = (req, res) => {
       .send({ message: `${req.body.email} Must have a valid email format .` });
     return;
   }
-  const id = req.params.id;
-  Technicians.findOneAndUpdate({ id }, req.body, { useFindAndModify: false })
+  const number = req.params.number;
+  Technicians.findOneAndUpdate({ number }, req.body, { useFindAndModify: false })
     .then((data) => {
       if (!data) {
         res.status(404).send({
@@ -152,8 +152,8 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  const id = req.params.id;
-  Technicians.findOneAndRemove({ id }, { useFindAndModify: false })
+  const number = req.params.number;
+  Technicians.findOneAndRemove({ number }, { useFindAndModify: false })
     // eslint-disable-next-line no-unused-vars
     .then((data) => res.send({ message: "Technician removed successfully" }))
     // eslint-disable-next-line no-unused-vars
