@@ -3,16 +3,7 @@ module.exports = (mongoose) => {
     "Technicians",
     mongoose.Schema(
       {
-        id: {
-          type: Number,
-          require: true,
-          unique: true,
-        },
-        firstName: {
-          type: String,
-          require: true,
-        },
-        lastName: {
+        fullName: {
           type: String,
           require: true,
         },
@@ -21,24 +12,26 @@ module.exports = (mongoose) => {
           require: true,
           unique: true,
         },
-        typeIds: {
-          type: Number,
-          require: true,
-          enum: [1,2,3],
-        },
-        skillsId: {
+        phone: {
           type: Number,
           require: true,
         },
-        hour_rate: {
+        statusActive: {
+          type: String,
+          require: true,
+          enum: ["Active", "Inactive"],
+        },
+        trained: {
+          type: String,
+          require: true,
+        },
+        assignedClients: {
           type: Number,
           require: true,
         },
-        daily_capacity: {
+        spareHoursAvailable: {
           type: Number,
           require: true,
-          min: 0,
-          max: 8,
         },
       },
       { timestamps: true }
