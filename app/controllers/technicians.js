@@ -4,7 +4,7 @@ const ObjectId = require('mongoose').Types.ObjectId;
 
 exports.create = (req, res) => {
   if (/^[a-z0-9A-Z._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/.test(req.body.email)) {
-    if (true) { //^(?=.{3,})([a-zA-Z]+[a-zA-Z]+)$/.test(req.body.fullName)
+    if (/^[a-zA-Z0-9_ ]*$/.test(req.body.fullName)) {
       if (/^\d{7,}$/.test(req.body.phone)) {
         if (
           !req.body.fullName ||
@@ -53,7 +53,6 @@ exports.create = (req, res) => {
   technician
     .save(technician)
     .then((data) => {
-      console.log(data);
       res.send(data);
     })
     // eslint-disable-next-line no-unused-vars
@@ -76,7 +75,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  Technicians.findOne({ _id: ObjectId(req.params.number) })
+  Technicians.findOne({ _id: ObjectId(req.params._id) })
     .then((data) => {
       if (!data) {
         return res.status(404).send({
@@ -95,7 +94,7 @@ exports.findOne = (req, res) => {
 
 exports.update = (req, res) => {
   if (/^[a-z0-9A-Z._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/.test(req.body.email)) {
-    if (true) {
+    if (/^[a-zA-Z0-9_ ]*$/.test(req.body.fullName)) {
       if (/^\d{7,}$/.test(req.body.phone)) {
         if (
           !req.body.fullName ||
@@ -105,17 +104,17 @@ exports.update = (req, res) => {
           !req.body.trained ||
           !req.body.assignedClients ||
           !req.body.spareHoursAvailable
-        ) {
-          res.status(400).send({ message: "Data to update can not be empty" });
-          return;
-        }
+        ){
+            res.status(400).send({ message: "Data to update can not be empty" });
+            return;
+          }
       } else {
-        res
-        .status(409)
-        .send({
-          message: `${req.body.phone} Must contain at least 7 character .`,
-        });
-      return;
+          res
+          .status(409)
+          .send({
+            message: `${req.body.phone} Must contain at least 7 character .`,
+          });
+        return;
       }
     } else {
       res

@@ -32,8 +32,6 @@ module.exports = (mongoose) => {
         spareHoursAvailable: {
           type: Number,
           require: true,
-          min: 0,
-          max: 8,
         },
       },
       { timestamps: true }
