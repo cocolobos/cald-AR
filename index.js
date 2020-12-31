@@ -3,11 +3,14 @@ const db = require("./app/models");
 const app = express();
 const router = require("./app/routes");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(router);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 db.mongoose
   .connect(db.url, {
@@ -22,5 +25,4 @@ db.mongoose
     process.exit();
   });
 
-app.use(router);
 app.listen(PORT, () => console.log(`Server running at port ${PORT}`));
