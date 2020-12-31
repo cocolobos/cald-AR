@@ -53,7 +53,6 @@ exports.create = (req, res) => {
   technician
     .save(technician)
     .then((data) => {
-      console.log(data);
       res.send(data);
     })
     // eslint-disable-next-line no-unused-vars
