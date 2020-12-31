@@ -104,17 +104,17 @@ exports.update = (req, res) => {
           !req.body.trained ||
           !req.body.assignedClients ||
           !req.body.spareHoursAvailable
-        ){
-            res.status(400).send({ message: "Data to update can not be empty" });
-            return;
-          }
+        ) {
+          res.status(400).send({ message: "Data to update can not be empty" });
+          return;
+        }
       } else {
-          res
-          .status(409)
-          .send({
-            message: `${req.body.phone} Must contain at least 7 character .`,
-          });
-        return;
+        res
+        .status(409)
+        .send({
+          message: `${req.body.phone} Must contain at least 7 character .`,
+        });
+      return;
       }
     } else {
       res
@@ -130,7 +130,7 @@ exports.update = (req, res) => {
       .send({ message: `${req.body.email} Must have a valid email format .` });
     return;
   }
-  Technicians.findOneAndUpdate({ _id: ObjectId(req.params.number) }, req.body, { useFindAndModify: false })
+  Technicians.findOneAndUpdate({ _id: ObjectId(req.params._id) }, req.body, { useFindAndModify: false })
     .then((data) => {
       if (!data) {
         res.status(404).send({
@@ -147,7 +147,7 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  Technicians.findOneAndRemove({ _id: ObjectId(req.params.number) }, { useFindAndModify: false })
+  Technicians.findOneAndRemove({ _id: ObjectId(req.params._id) }, { useFindAndModify: false })
     // eslint-disable-next-line no-unused-vars
     .then((data) => res.send(data))
     // eslint-disable-next-line no-unused-vars
