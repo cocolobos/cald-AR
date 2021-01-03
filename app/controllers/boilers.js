@@ -1,5 +1,6 @@
 const db = require("../models");
 const Boilers = db.boilers;
+const ObjectId = require('mongoose').Types.ObjectId;
 
 exports.create = (req, res) => {
   // eslint-disable-next-line no-useless-escape
@@ -60,11 +61,11 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  Boilers.findOne({ id: req.params.id })
+  Boilers.findOne({ _id: ObjectId(req.params._id) })
     .then((data) => {
       if (!data) {
         return res.status(404).send({
-          message: `Boiler with id ${req.params.id} was not found`,
+          message: `Boiler was not found`,
         });
       }
       res.send(data);
