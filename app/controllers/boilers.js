@@ -3,11 +3,10 @@ const Boilers = db.boilers;
 
 exports.create = (req, res) => {
   // eslint-disable-next-line no-useless-escape
-  if (/^[\$]+[0-9]+(\.[0-9]{1,2})?$/.test(req.body.hour_maintaince_cost)) {
+  if (/^[0-9]+(\.[0-9]{1,2})?$/.test(req.body.hour_maintaince_cost)) {
     // eslint-disable-next-line no-useless-escape
-    if (/^[\$]+[0-9]+(\.[0-9]{1,2})?$/.test(req.body.hour_eventual_cost)) {
+    if (/^[0-9]+(\.[0-9]{1,2})?$/.test(req.body.hour_eventual_cost)) {
       if (
-        !req.body.id ||
         !req.body.typeId ||
         !req.body.maintaince_rate ||
         !req.body.hour_maintaince_cost ||
@@ -18,19 +17,18 @@ exports.create = (req, res) => {
       }
     } else {
       res.status(400).send({
-        message: `The decimal number ${req.body.hour_eventual_cost} is incorrect, it must be preceded by the $ symbol and separated by .`,
+        message: `The decimal number ${req.body.hour_eventual_cost} is incorrect, it must be separated by .`,
       });
       return;
     }
   } else {
     res.status(400).send({
-      message: `The decimal number ${req.body.hour_maintaince_cost} is incorrect, it must be preceded by the $ symbol and separated by .`,
+      message: `The decimal number ${req.body.hour_maintaince_cost} is incorrect, it must be separated by .`,
     });
     return;
   }
 
   const boilers = new Boilers({
-    id: req.body.id,
     typeId: req.body.typeId,
     maintaince_rate: req.body.maintaince_rate,
     hour_maintaince_cost: req.body.hour_maintaince_cost,
@@ -85,11 +83,10 @@ exports.update = (req, res) => {
     });
   }
   // eslint-disable-next-line no-useless-escape
-  if (/^[\$]+[0-9]+(\.[0-9]{1,2})?$/.test(req.body.hour_maintaince_cost)) {
+  if (/^[0-9]+(\.[0-9]{1,2})?$/.test(req.body.hour_maintaince_cost)) {
     // eslint-disable-next-line no-useless-escape
-    if (/^[\$]+[0-9]+(\.[0-9]{1,2})?$/.test(req.body.hour_eventual_cost)) {
+    if (/^[0-9]+(\.[0-9]{1,2})?$/.test(req.body.hour_eventual_cost)) {
       if (
-        !req.body.id ||
         !req.body.typeId ||
         !req.body.maintaince_rate ||
         !req.body.hour_maintaince_cost ||
@@ -100,23 +97,21 @@ exports.update = (req, res) => {
       }
     } else {
       res.status(400).send({
-        message: `The decimal number ${req.body.hour_eventual_cost} is incorrect, it must be preceded by the $ symbol and separated by .`,
+        message: `The decimal number ${req.body.hour_eventual_cost} is incorrect, it must be separated by .`,
       });
       return;
     }
   } else {
     res.status(400).send({
-      message: `The decimal number ${req.body.hour_maintaince_cost} is incorrect, it must be preceded by the $ symbol and separated by .`,
+      message: `The decimal number ${req.body.hour_maintaince_cost} is incorrect, it must be separated by .`,
     });
     return;
   }
-
-  const id = req.params.id;
-  Boilers.findOneAndUpdate({ id }, req.body, { useFindAndModify: false })
+  Boilers.findOneAndUpdate({ _id: ObjectId(req.params._id)}, req.body, { useFindAndModify: false })
     .then((data) => {
       if (!data) {
         res.status(400).send({
-          message: `Cannot update boiler with id=${id}. Maybe Boiler was not found!`,
+          message: "Some error ocurred while updating Boiler",
         });
       } else res.send({ message: "Boiler was update successfully." });
     })
@@ -129,14 +124,13 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  const id = req.params.id;
-  Boilers.findOneAndRemove({ id }, { useFindAndModify: false })
+  Boilers.findOneAndRemove({ _id: ObjectId(req.params._id) }, { useFindAndModify: false })
     // eslint-disable-next-line no-unused-vars
-    .then((data) => res.send({ message: "Boiler was remove successfully" }))
+    .then((data) => res.send(data))
     // eslint-disable-next-line no-unused-vars
     .catch((err) => {
-      res.status(500).send({
-        message: "Error removing boiler with de Id:" + id,
+      res.status(503).send({
+        ...err
       });
     });
 };
