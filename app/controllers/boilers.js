@@ -61,14 +61,16 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  Boilers.findOne({ _id: ObjectId(req.params._id) })
+  Boilers.findOne({ _id: ObjectId(req.params.id) })
     .then((data) => {
       if (!data) {
         return res.status(404).send({
           message: `Boiler was not found`,
         });
       }
-      res.send(data);
+      res.status(200).send({
+        message: 'Request completed succesfully.', data,
+      });
     })
     .catch((err) => {
       res.status(500).send({
@@ -108,13 +110,13 @@ exports.update = (req, res) => {
     });
     return;
   }
-  Boilers.findOneAndUpdate({ _id: ObjectId(req.params._id)}, req.body, { useFindAndModify: false })
+  Boilers.findOneAndUpdate({ _id: ObjectId(req.params.id)}, req.body, { useFindAndModify: false })
     .then((data) => {
       if (!data) {
         res.status(400).send({
           message: "Some error ocurred while updating Boiler",
         });
-      } else res.send({ message: "Boiler was update successfully." });
+      } else res.status(200).send({ message: "Boiler was update successfully." });
     })
     .catch((err) => {
       res.status(500).send({
@@ -125,13 +127,12 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  Boilers.findOneAndRemove({ _id: ObjectId(req.params._id) }, { useFindAndModify: false })
-    // eslint-disable-next-line no-unused-vars
-    .then((data) => res.send(data))
-    // eslint-disable-next-line no-unused-vars
+  Boilers.findOneAndRemove({ _id: ObjectId(req.params.id) }, { useFindAndModify: false })
+  .then(() => res.status(200).send({ message: 'Boiler was removed succesfully' }))
     .catch((err) => {
-      res.status(503).send({
-        ...err
+      res.status(500).send({
+        message: `Some error ocurred while removing boiler with id = ${ObjectId(req.params.id)}`,
+        err,
       });
     });
 };
