@@ -151,13 +151,12 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  Technicians.findOneAndRemove({ id: ObjectId(req.params._id) }, { useFindAndModify: false })
-    // eslint-disable-next-line no-unused-vars
-    .then((data) => res.send(data))
-    // eslint-disable-next-line no-unused-vars
+  Technicians.findOneAndRemove({ _id: ObjectId(req.params.id) }, { useFindAndModify: false })
+  .then(() => res.status(200).send({ message: 'Technician was removed succesfully' }))
     .catch((err) => {
-      res.status(503).send({
-        ...err
+      res.status(500).send({
+        message: `Some error ocurred while removing technician with id = ${ObjectId(req.params.id)}`,
+        err,
       });
     });
 };
