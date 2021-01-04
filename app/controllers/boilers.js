@@ -99,13 +99,17 @@ exports.update = (req, res) => {
         return;
       }
     } else {
-      res.status(400).send({
+      res
+      .status(400)
+      .send({
         message: `The decimal number ${req.body.hour_eventual_cost} is incorrect, it must be separated by .`,
       });
       return;
     }
   } else {
-    res.status(400).send({
+    res
+    .status(400)
+    .send({
       message: `The decimal number ${req.body.hour_maintaince_cost} is incorrect, it must be separated by .`,
     });
     return;
