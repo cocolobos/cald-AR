@@ -3,7 +3,7 @@ module.exports = (mongoose) => {
     "building",
     mongoose.Schema(
       {
-        id: {
+        _id: {
           type: Number,
           require: true,
           unique: true,

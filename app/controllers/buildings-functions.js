@@ -1,12 +1,12 @@
 const db = require("../models");
 const Building = db.buildings;
+const ObjectId = require("mongoose").Types.ObjectId;
 
 exports.create = (req, res) => {
   if (/^(?=.{6,})([a-zA-Z]+\s{1}[a-zA-Z]+)$/.test(req.body.fullname)) {
     if (/^(?=.{7,})([0-9])+$/.test(req.body.phone)) {
       if (/^(?=.{5,})([a-zA-Z0-9]+\s{1}[0-9]+)$/.test(req.body.address)) {
         if (
-          !req.body.id ||
           !req.body.address ||
           !req.body.boilerID ||
           !req.body.fullname ||
@@ -35,7 +35,6 @@ exports.create = (req, res) => {
   }
 
   const building = new Building({
-    id: req.body.id,
     address: req.body.address,
     boilerID: req.body.boilerID,
     fullname: req.body.fullname,
@@ -67,12 +66,13 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  Building.findOne({ id: req.params.id })
+  Building.findOne({ _id: ObjectId(req.params.id) })
     .then((data) => {
       if (!data) {
-        return res.status(404).send({
+        res.status(404).send({
           message: `Building id ${req.params.id} not found.`,
         });
+        return;
       }
       res.send(data);
     })
@@ -121,11 +121,7 @@ exports.update = (req, res) => {
     return;
   }
 
-  const buildingId = req.params.id;
-  // eslint-disable-next-line no-unused-vars
-  const { id, ...body } = req.body;
-
-  Building.findOneAndUpdate({ id: buildingId }, body, {
+  Building.findOneAndUpdate({ _id: ObjectId(req.params.id) }, req.body, {
     useFindAndModify: false,
   })
     .then((data) => {
@@ -137,18 +133,21 @@ exports.update = (req, res) => {
     })
     .catch(() => {
       res.status(500).send({
-        message: "Can not update building id " + buildingId,
+        message: "Can not update building id " + ObjectId(req.params.id),
       });
     });
 };
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Building.findOneAndRemove({ id }, { useFindAndModify: false })
+  Building.findOneAndRemove(
+    { _id: ObjectId(req.params.id) },
+    { useFindAndModify: false }
+  )
     .then(() => res.send({ message: "Building was removed." }))
     .catch(() => {
       res.status(500).send({
-        message: "Error removing building with id=" + id,
+        message: "Error removing building with id=" + ObjectId(req.params.id),
       });
     });
 };
