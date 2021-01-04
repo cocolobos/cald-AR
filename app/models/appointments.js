@@ -6,13 +6,22 @@ module.exports = (mongoose) => {
         id: {
           type: Number,
           required: true,
+          unique: true,
         },
-        issue: {
+        buildingId: {
+          type: Number,
+          required: true,        
+        },
+        boilerId: {
+          type: Number,
+          required: true,      
+        },
+        maintenanceType: {
           type: String,
           required: true,
         },
         date: {
-          type: String,
+          type: Date,
           required: true,
         },
         estimatedTime: {

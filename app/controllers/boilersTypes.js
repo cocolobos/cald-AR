@@ -1,18 +1,29 @@
 const db = require("../models");
 const BoilerType = db.boilersTypes;
+const ObjectId = require('mongoose').Types.ObjectId;
 
 exports.create = (req, res) => {
-  if (
-    !req.body.id ||
-    !req.body.skillsId ||
-    !req.body.descriptions ||
-    !req.body.stock
-  ) {
-    res.status(400).send({ message: "Content can not be empty" });
+  if (req.body.stock > 20 || req.body.stock <= 0) {
+    if (
+      !req.body.skillsId ||
+      !req.body.descriptions ||
+      !req.body.stock
+    ) {
+      res.status(400).send({ message: "Content can not be empty" });
+      return;
+    }
+    res.status(409).send({
+      message: ` ${req.body.stock} is not a number between 1 and 20 `,
+    });
+    return;
+  }
+  if (req.body.skillsId > 10 || req.body.skillsId <= 0) {
+    res.status(409).send({
+      message: ` ${req.body.skillsId} is not a number between 1 and 10 `,
+    });
     return;
   }
   const boilerType = new BoilerType({
-    id: req.body.id,
     skillsId: req.body.skillsId,
     descriptions: req.body.descriptions,
     stock: req.body.stock,
@@ -25,10 +36,8 @@ exports.create = (req, res) => {
     })
     // eslint-disable-next-line no-unused-vars
     .catch((err) => {
-      res.status(500).send({
-        message: "Some error ocurred while creating new Boiler Type",
+      res.status(503).send({...err});
       });
-    });
 };
 
 exports.findAll = (req, res) => {
@@ -45,11 +54,11 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  BoilerType.findOne({ id: req.params.id })
+  BoilerType.findOne({ _id: ObjectId(req.params._id) })
     .then((data) => {
       if (!data) {
         return res.status(404).send({
-          message: "Boiler Type with id ${req.params.id} could not be found",
+          message: "Boiler Type could not be found",
         });
       }
       res.send(data);
@@ -63,23 +72,29 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  if (!req.body) {
-    return res.status(400).send({
-      message: "Data to update can not be empty",
+  if (req.body.stock > 20 || req.body.stock <= 0) {
+    if (
+      !req.body.skillsId ||
+      !req.body.descriptions ||
+      !req.body.stock
+    ) {
+      res.status(400).send({ message: "Content can not be empty" });
+      return;
+    }
+    res.status(409).send({
+      message: ` ${req.body.stock} is not a number between 1 and 20 `,
     });
-  }
-  if (
-    !req.body.id ||
-    !req.body.skillsId ||
-    !req.body.descriptions ||
-    !req.body.stock
-  ) {
-    res.status(400).send({ message: "Content can not be empty" });
     return;
   }
-  const id = req.params.id;
+  if (req.body.skillsId > 10 || req.body.skillsId <= 0) {
+    res.status(409).send({
+      message: ` ${req.body.skillsId} is not a number between 1 and 10 `,
+    });
+    return;
+  }
 
-  BoilerType.findOneAndUpdate({ id }, req.body, { useFindAndModify: false })
+
+  BoilerType.findOneAndUpdate({ _id: ObjectId(req.params._id) }, req.body, { useFindAndModify: false })
     .then((data) => {
       if (!data) {
         res.status(404).send({
@@ -90,20 +105,19 @@ exports.update = (req, res) => {
     // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
-        message: "Some error ocurred while updating Boiler Type",
+        ...err
       });
     });
 };
 
 exports.delete = (req, res) => {
-  const id = req.params.id;
-  BoilerType.findOneAndRemove({ id }, { useFindAndModify: false })
+  BoilerType.findOneAndRemove({ _id: ObjectId(req.params._id) }, { useFindAndModify: false })
     // eslint-disable-next-line no-unused-vars
-    .then((data) => res.send({ message: "Boiler Type removed successfully" }))
+    .then((data) => res.send(data))
     // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
-        message: "Some error ocurred while deleting Boiler Type",
+        ...err
       });
     });
 };

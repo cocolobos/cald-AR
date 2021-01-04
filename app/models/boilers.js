@@ -3,24 +3,22 @@ module.exports = (mongoose) => {
     "boilers",
     mongoose.Schema(
       {
-        id: {
-          type: Number,
-          required: true,
-        },
         typeId: {
-          type: Number,
+          type: String,
+          enum: ["A", "B", "C", "D"],
           required: true,
         },
         maintaince_rate: {
           type: String,
+          enum: ["yearly", "quarterly", "monthly"],
           required: true,
         },
         hour_maintaince_cost: {
-          type: String,
+          type: Number,
           required: true,
         },
         hour_eventual_cost: {
-          type: String,
+          type:  Number,
           required: true,
         },
       },
