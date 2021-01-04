@@ -6,7 +6,10 @@ exports.create = (req, res) => {
     if (req.body.id < 9999) {
       if (
         !req.body.id ||
-        !req.body.issue ||
+        !req.body.buildingId ||
+        !req.body.boilerId ||
+        !req.body.id ||
+        !req.body.maintenanceType ||
         !req.body.date ||
         !req.body.estimatedTime
       ) {
@@ -22,7 +25,10 @@ exports.create = (req, res) => {
   if (req.body.id.length <5) {
     if (
       !req.body.id ||
-      !req.body.issue ||
+      !req.body.buildingId ||
+      !req.body.boilerId ||
+      !req.body.id ||
+      !req.body.maintenanceType ||
       !req.body.date ||
       !req.body.estimatedTime
     ) {
@@ -36,7 +42,9 @@ exports.create = (req, res) => {
 
   const appointment = new Appointment({
     id: req.body.id,
-    issue: req.body.issue,
+    buildingId: req.body.buildingId,
+    boilerId: req.body.buildingId,
+    maintenanceType: req.body.maintenanceType,
     date: req.body.date,
     estimatedTime: req.body.estimatedTime,
   });
@@ -95,7 +103,9 @@ exports.update = (req, res) => {
     if (req.body.id < 9999) {
       if (
         !req.body.id ||
-        !req.body.issue ||
+        !req.body.buildingId ||
+        !req.body.boilerId ||
+        !req.body.maintenanceType ||
         !req.body.date ||
         !req.body.estimatedTime
       ) {

@@ -8,12 +8,22 @@ module.exports = (mongoose) => {
           required: true,
           unique: true,
         },
-        issue: {
+        buildingId: {
+          type: Number,
+          required: true,
+          unique: true,
+        },
+        boilerId: {
+          type: Number,
+          required: true,
+          unique: true,
+        },
+        maintenanceType: {
           type: String,
           required: true,
         },
         date: {
-          type: String,
+          type: date,
           required: true,
         },
         estimatedTime: {
