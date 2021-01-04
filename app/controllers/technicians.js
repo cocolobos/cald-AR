@@ -75,19 +75,22 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  Technicians.findOne({ _id: ObjectId(req.params._id) })
+  Technicians.findOne({ _id: ObjectId(req.params.id) })
     .then((data) => {
       if (!data) {
-        return res.status(404).send({
-          message: "Technician could not be found",
+        res.status(404).send({
+          message: `Technician with id ${req.params.id} was not found`,
         });
+        return;
       }
-      res.send(data);
+      res.status(200).send({
+        message: 'Request completed succesfully.', data,
+      });
     })
-    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
-      res.status(503).send({
-        message: "Some error ocurred while finding Technician by ID",
+      res.status(500).send({
+        message:
+          err.message || 'Some error ocurred while retrieving technician.',
       });
     });
 };
@@ -130,30 +133,30 @@ exports.update = (req, res) => {
       .send({ message: `${req.body.email} Must have a valid email format .` });
     return;
   }
-  Technicians.findOneAndUpdate({ _id: ObjectId(req.params._id) }, req.body, { useFindAndModify: false })
+  Technicians.findOneAndUpdate({ _id: ObjectId(req.params.id) }, req.body,
+    { useFindAndModify: false })
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: "Some error ocurred while updating Technician",
+          message: `Cannot update Technician with id = ${ObjectId(req.params.id)}. Maybe Technician was not found`,
         });
-      } else res.send(data);
+      } else res.status(200).send({ message: 'Technician was updated succesfully' });
     })
-    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
-      res.status(503).send({
-        ...err
+      res.status(500).send({
+        message: `Error updating Technician with id = ${ObjectId(req.params.id)}`,
+        err,
       });
     });
 };
 
 exports.delete = (req, res) => {
-  Technicians.findOneAndRemove({ _id: ObjectId(req.params._id) }, { useFindAndModify: false })
-    // eslint-disable-next-line no-unused-vars
-    .then((data) => res.send(data))
-    // eslint-disable-next-line no-unused-vars
+  Technicians.findOneAndRemove({ _id: ObjectId(req.params.id) }, { useFindAndModify: false })
+  .then(() => res.status(200).send({ message: 'Technician was removed succesfully' }))
     .catch((err) => {
-      res.status(503).send({
-        ...err
+      res.status(500).send({
+        message: `Some error ocurred while removing technician with id = ${ObjectId(req.params.id)}`,
+        err,
       });
     });
 };
