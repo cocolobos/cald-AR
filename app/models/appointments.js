@@ -10,13 +10,11 @@ module.exports = (mongoose) => {
         },
         buildingId: {
           type: Number,
-          required: true,
-          unique: true,
+          required: true,        
         },
         boilerId: {
           type: Number,
-          required: true,
-          unique: true,
+          required: true,      
         },
         maintenanceType: {
           type: String,
