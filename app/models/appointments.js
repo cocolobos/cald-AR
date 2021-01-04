@@ -21,7 +21,7 @@ module.exports = (mongoose) => {
           required: true,
         },
         date: {
-          type: date,
+          type: Date,
           required: true,
         },
         estimatedTime: {
