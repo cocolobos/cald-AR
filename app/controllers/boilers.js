@@ -61,16 +61,14 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  Boilers.findOne({ _id: ObjectId(req.params.id) })
+  Boilers.findOne({ _id: ObjectId(req.params._id) })
     .then((data) => {
       if (!data) {
         return res.status(404).send({
           message: `Boiler was not found`,
         });
       }
-      res.status(200).send({
-        message: 'Request completed succesfully.', data,
-      });
+      res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
@@ -99,28 +97,24 @@ exports.update = (req, res) => {
         return;
       }
     } else {
-      res
-      .status(400)
-      .send({
+      res.status(400).send({
         message: `The decimal number ${req.body.hour_eventual_cost} is incorrect, it must be separated by .`,
       });
       return;
     }
   } else {
-    res
-    .status(400)
-    .send({
+    res.status(400).send({
       message: `The decimal number ${req.body.hour_maintaince_cost} is incorrect, it must be separated by .`,
     });
     return;
   }
-  Boilers.findOneAndUpdate({ _id: ObjectId(req.params.id)}, req.body, { useFindAndModify: false })
+  Boilers.findOneAndUpdate({ _id: ObjectId(req.params._id)}, req.body, { useFindAndModify: false })
     .then((data) => {
       if (!data) {
         res.status(400).send({
           message: "Some error ocurred while updating Boiler",
         });
-      } else res.status(200).send({ message: "Boiler was update successfully." });
+      } else res.send({ message: "Boiler was update successfully." });
     })
     .catch((err) => {
       res.status(500).send({
@@ -131,12 +125,13 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  Boilers.findOneAndRemove({ _id: ObjectId(req.params.id) }, { useFindAndModify: false })
-  .then(() => res.status(200).send({ message: 'Boiler was removed succesfully' }))
+  Boilers.findOneAndRemove({ _id: ObjectId(req.params._id) }, { useFindAndModify: false })
+    // eslint-disable-next-line no-unused-vars
+    .then((data) => res.send(data))
+    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
-      res.status(500).send({
-        message: `Some error ocurred while removing boiler with id = ${ObjectId(req.params.id)}`,
-        err,
+      res.status(503).send({
+        ...err
       });
     });
 };
