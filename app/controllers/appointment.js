@@ -1,33 +1,25 @@
 const db = require("../models");
 const Appointment = db.appointments;
+const ObjectId = require('mongoose').Types.ObjectId;
 
 exports.create = (req, res) => {
-  if (req.body.estimatedTime <9) {
-    if (req.body.id < 9999) {
-      if (
-        !req.body.id ||
-        !req.body.buildingId ||
-        !req.body.boilerId ||
-        !req.body.id ||
-        !req.body.maintenanceType ||
-        !req.body.date ||
-        !req.body.estimatedTime
-      ) {
-        res.status(400).send({ message: "Content can not be empty." });
-        return;
-      }
-    } else {
-      res.status(409).send({ message:  "Id cannot contain more than 4 characters.`"});
-        return;
-    }
+  if (req.body.estimatedTime <9) {    
+    if (       
+      !req.body.buildingId ||
+      !req.body.boilerId ||       
+      !req.body.maintenanceType ||
+      !req.body.date ||
+      !req.body.estimatedTime
+    ) {
+      res.status(400).send({ message: "Content can not be empty." });
+      return;
+    }    
   } else {
     res.status(409).send({ message:  `${req.body.estimatedTime} cannot be more than 9 hours.` });
-  if (req.body.id.length <5) {
-    if (
-      !req.body.id ||
+  {
+    if (      
       !req.body.buildingId ||
-      !req.body.boilerId ||
-      !req.body.id ||
+      !req.body.boilerId ||     
       !req.body.maintenanceType ||
       !req.body.date ||
       !req.body.estimatedTime
@@ -35,13 +27,10 @@ exports.create = (req, res) => {
       res.status(400).send({ message: "Content can not be empty." });
       return;
     }
-  } else {
-    res.status(400).send({ message: "Id cannot contain more than 4 characters." });
-      return;
+  
   }
 
-  const appointment = new Appointment({
-    id: req.body.id,
+  const appointment = new Appointment({  
     buildingId: req.body.buildingId,
     boilerId: req.body.buildingId,
     maintenanceType: req.body.maintenanceType,
@@ -75,7 +64,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  Appointment.findOne({ id: req.params.id })
+  Appointment.findOne({ _id: ObjectId(req.params.id) })
     .then((data) => {
       if (!data) {
         return res.status(404).send({
@@ -100,9 +89,8 @@ exports.update = (req, res) => {
   }
 
   if (req.body.estimatedTime <9) {
-    if (req.body.id < 9999) {
-      if (
-        !req.body.id ||
+    
+      if (        
         !req.body.buildingId ||
         !req.body.boilerId ||
         !req.body.maintenanceType ||
@@ -112,45 +100,38 @@ exports.update = (req, res) => {
         res.status(400).send({ message: "Content can not be empty." });
         return;
       }
-    } else {
-      res.status(409).send({ message:  "Id cannot contain more than 4 characters.`"});
-        return;
-    } 
+    
   } else {
     res.status(409).send({ message:  `${req.body.estimatedTime} cannot be more than 9 hours.` });
       return;
   }
 
-  const id = req.params.id;
-
-  Appointment.findOneAndUpdate({ id }, req.body, { useFindAndModify: false })
+  Appointment.findOneAndUpdate({ _id: ObjectId(req.params.id) }, req.body,
+  { useFindAndModify: false })
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot update appointment with id=${id}. Maybe the appointment was not found`,
+          message: `Cannot update appointment with id=${ObjectId(req.params.id)}. Maybe the appointment was not found`,
         });
       } else res.send({ message: "Appointment was updated successfully." });
       res.send(data);
     })
-    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
-        message: "Some error ocurred while updating appointment with id=" + id,
+        message: `Some error ocurred while updating appointment with id=${ObjectId(req.params.id)}`,
       });
     });
 };
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Appointment.findOneAndRemove({ id }, { useFindAndModify: false })
-    // eslint-disable-next-line no-unused-vars
+  Appointment.findOneAndRemove({ _id: ObjectId(req.params.id) }, { useFindAndModify: false }) 
     .then((data) =>
       res.send({ message: "Appointment was removed successfully." })
     )
-    // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
-        message: "Error removing appointment with id=" + id,
+        message: `Error removing appointment with id= ${ObjectId(req.params.id)}`,
       });
     });
-}}
+}} 
