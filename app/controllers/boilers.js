@@ -1,6 +1,6 @@
 const db = require("../models");
 const Boilers = db.boilers;
-const ObjectId = require('mongoose').Types.ObjectId;
+const ObjectId = require("mongoose").Types.ObjectId;
 
 exports.create = (req, res) => {
   // eslint-disable-next-line no-useless-escape
@@ -69,7 +69,8 @@ exports.findOne = (req, res) => {
         });
       }
       res.status(200).send({
-        message: 'Request completed succesfully.', data,
+        message: "Request completed succesfully.",
+        data,
       });
     })
     .catch((err) => {
@@ -99,28 +100,27 @@ exports.update = (req, res) => {
         return;
       }
     } else {
-      res
-      .status(400)
-      .send({
+      res.status(400).send({
         message: `The decimal number ${req.body.hour_eventual_cost} is incorrect, it must be separated by .`,
       });
       return;
     }
   } else {
-    res
-    .status(400)
-    .send({
+    res.status(400).send({
       message: `The decimal number ${req.body.hour_maintaince_cost} is incorrect, it must be separated by .`,
     });
     return;
   }
-  Boilers.findOneAndUpdate({ _id: ObjectId(req.params.id)}, req.body, { useFindAndModify: false })
+  Boilers.findOneAndUpdate({ _id: ObjectId(req.params.id) }, req.body, {
+    useFindAndModify: false,
+  })
     .then((data) => {
       if (!data) {
         res.status(400).send({
           message: "Some error ocurred while updating Boiler",
         });
-      } else res.status(200).send({ message: "Boiler was update successfully." });
+      } else
+        res.status(200).send({ message: "Boiler was update successfully." });
     })
     .catch((err) => {
       res.status(500).send({
@@ -131,11 +131,18 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  Boilers.findOneAndRemove({ _id: ObjectId(req.params.id) }, { useFindAndModify: false })
-  .then(() => res.status(200).send({ message: 'Boiler was removed succesfully' }))
+  Boilers.findOneAndRemove(
+    { _id: ObjectId(req.params.id) },
+    { useFindAndModify: false }
+  )
+    .then(() =>
+      res.status(200).send({ message: "Boiler was removed succesfully" })
+    )
     .catch((err) => {
       res.status(500).send({
-        message: `Some error ocurred while removing boiler with id = ${ObjectId(req.params.id)}`,
+        message: `Some error ocurred while removing boiler with id = ${ObjectId(
+          req.params.id
+        )}`,
         err,
       });
     });
