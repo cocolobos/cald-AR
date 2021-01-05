@@ -94,7 +94,7 @@ exports.update = (req, res) => {
   }
 
 
-  BoilerType.findOneAndUpdate({ _id: ObjectId(req.params._id) }, req.body, { useFindAndModify: false })
+  BoilerType.findOneAndUpdate({ _id: ObjectId(req.params.id) }, req.body, { useFindAndModify: false })
     .then((data) => {
       if (!data) {
         res.status(404).send({
@@ -111,13 +111,12 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  BoilerType.findOneAndRemove({ _id: ObjectId(req.params._id) }, { useFindAndModify: false })
-    // eslint-disable-next-line no-unused-vars
-    .then((data) => res.send(data))
-    // eslint-disable-next-line no-unused-vars
-    .catch((err) => {
-      res.status(500).send({
-        ...err
-      });
+  BoilerType.findOneAndRemove({ _id: ObjectId(req.params.id) }, { useFindAndModify: false })
+  .then(() => res.status(200).send({ message: 'Boiler was removed succesfully' }))
+  .catch((err) => {
+    res.status(500).send({
+      message: `Some error ocurred while removing boiler with id = ${ObjectId(req.params.id)}`,
+      err,
     });
+  });
 };
