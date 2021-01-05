@@ -2,17 +2,21 @@ module.exports = (mongoose) => {
   const appointments = mongoose.model(
     "appointments",
     mongoose.Schema(
-      {
-        id: {
+      {        
+        buildingId: {
           type: Number,
-          required: true,
+          required: true,        
         },
-        issue: {
+        boilerId: {
+          type: Number,
+          required: true,      
+        },
+        maintenanceType: {
           type: String,
           required: true,
         },
         date: {
-          type: String,
+          type: Date,
           required: true,
         },
         estimatedTime: {

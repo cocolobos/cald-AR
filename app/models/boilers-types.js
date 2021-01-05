@@ -3,10 +3,6 @@ module.exports = (mongoose) => {
     "BoilersTypes",
     mongoose.Schema(
       {
-        id: {
-          type: Number,
-          require: true,
-        },
         skillsId: {
           type: Number,
           require: true,
@@ -14,6 +10,7 @@ module.exports = (mongoose) => {
         descriptions: {
           type: String,
           require: true,
+          enum: ["Orange", "Turquoise", "Pink", "Puce"],
         },
         stock: {
           type: Number,
