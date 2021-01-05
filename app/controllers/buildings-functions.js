@@ -66,11 +66,11 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  Building.findOne({ _id: ObjectId(req.params.id) })
+  Building.findOne({ _id: ObjectId(req.params._id) })
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: `Building id ${req.params.id} not found.`,
+          message: `Building id ${req.params._id} not found.`,
         });
         return;
       }
@@ -121,7 +121,7 @@ exports.update = (req, res) => {
     return;
   }
 
-  Building.findOneAndUpdate({ _id: ObjectId(req.params.id) }, req.body, {
+  Building.findOneAndUpdate({ _id: ObjectId(req.params._id) }, req.body, {
     useFindAndModify: false,
   })
     .then((data) => {
@@ -133,21 +133,18 @@ exports.update = (req, res) => {
     })
     .catch(() => {
       res.status(500).send({
-        message: "Can not update building id " + ObjectId(req.params.id),
+        message: "Can not update building id " + ObjectId(req.params._id),
       });
     });
 };
 
 exports.delete = (req, res) => {
-  const id = req.params.id;
   Building.findOneAndRemove(
-    { _id: ObjectId(req.params.id) },
+    { _id: ObjectId(req.params._id) },
     { useFindAndModify: false }
   )
-    .then(() => res.send({ message: "Building was removed." }))
-    .catch(() => {
-      res.status(500).send({
-        message: "Error removing building with id=" + ObjectId(req.params.id),
-      });
+    .then((data) => res.send(data))
+    .catch((error) => {
+      res.status(500).send(error);
     });
 };

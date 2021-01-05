@@ -24,7 +24,7 @@ module.exports = (mongoose) => {
         typeIds: {
           type: Number,
           require: true,
-          enum: [1,2,3],
+          enum: [1, 2, 3],
         },
         skillsId: {
           type: Number,
