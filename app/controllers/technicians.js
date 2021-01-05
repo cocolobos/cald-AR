@@ -19,19 +19,15 @@ exports.create = (req, res) => {
           return;
         }
       } else {
-        res
-          .status(409)
-          .send({
-            message: `${req.body.lastName} Must contain at least 3 character .`,
-          });
+        res.status(409).send({
+          message: `${req.body.lastName} Must contain at least 3 character .`,
+        });
         return;
       }
     } else {
-      res
-        .status(409)
-        .send({
-          message: `${req.body.firstName} Must contain at least 3 character .`,
-        });
+      res.status(409).send({
+        message: `${req.body.firstName} Must contain at least 3 character .`,
+      });
       return;
     }
   } else {
@@ -113,19 +109,15 @@ exports.update = (req, res) => {
           return;
         }
       } else {
-        res
-          .status(409)
-          .send({
-            message: `${req.body.lastName} Must contain at least 3 character .`,
-          });
+        res.status(409).send({
+          message: `${req.body.lastName} Must contain at least 3 character .`,
+        });
         return;
       }
     } else {
-      res
-        .status(409)
-        .send({
-          message: `${req.body.firstName} Must contain at least 3 character .`,
-        });
+      res.status(409).send({
+        message: `${req.body.firstName} Must contain at least 3 character .`,
+      });
       return;
     }
   } else {
