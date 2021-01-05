@@ -66,11 +66,11 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  Building.findOne({ _id: ObjectId(req.params._id) })
+  Building.findOne({ _id: ObjectId(req.params.id) })
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: `Building id ${req.params._id} not found.`,
+          message: `Building id ${req.params.id} not found.`,
         });
         return;
       }
@@ -121,7 +121,7 @@ exports.update = (req, res) => {
     return;
   }
 
-  Building.findOneAndUpdate({ _id: ObjectId(req.params._id) }, req.body, {
+  Building.findOneAndUpdate({ _id: ObjectId(req.params.id) }, req.body, {
     useFindAndModify: false,
   })
     .then((data) => {
@@ -133,14 +133,14 @@ exports.update = (req, res) => {
     })
     .catch(() => {
       res.status(500).send({
-        message: "Can not update building id " + ObjectId(req.params._id),
+        message: "Can not update building id " + ObjectId(req.params.id),
       });
     });
 };
 
 exports.delete = (req, res) => {
   Building.findOneAndRemove(
-    { _id: ObjectId(req.params._id) },
+    { _id: ObjectId(req.params.id) },
     { useFindAndModify: false }
   )
     .then((data) => res.send(data))
