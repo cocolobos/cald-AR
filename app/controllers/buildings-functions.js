@@ -139,15 +139,12 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  const id = req.params.id;
   Building.findOneAndRemove(
     { _id: ObjectId(req.params.id) },
     { useFindAndModify: false }
   )
-    .then(() => res.send({ message: "Building was removed." }))
-    .catch(() => {
-      res.status(500).send({
-        message: "Error removing building with id=" + ObjectId(req.params.id),
-      });
+    .then((data) => res.send(data))
+    .catch((error) => {
+      res.status(500).send(error);
     });
 };

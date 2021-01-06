@@ -4,6 +4,7 @@ const ObjectId = require("mongoose").Types.ObjectId;
 
 exports.create = (req, res) => {
   if (/^[a-z0-9A-Z._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/.test(req.body.email)) {
+
     if (/^[a-zA-Z0-9_ ]*$/.test(req.body.fullName)) {
       if (/^\d{7,}$/.test(req.body.phone)) {
         if (
@@ -14,6 +15,7 @@ exports.create = (req, res) => {
           !req.body.trained ||
           !req.body.assignedClients ||
           !req.body.spareHoursAvailable
+
         ) {
           res.status(400).send({ message: "Content can not be empty" });
           return;
