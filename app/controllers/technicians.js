@@ -60,7 +60,6 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-  console.log("###", db.technicians);
   Technicians.find({})
     .then((data) => {
       res.send(data);
