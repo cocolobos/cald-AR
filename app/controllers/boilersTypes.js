@@ -1,14 +1,10 @@
 const db = require("../models");
 const BoilerType = db.boilersTypes;
-const ObjectId = require('mongoose').Types.ObjectId;
+const ObjectId = require("mongoose").Types.ObjectId;
 
 exports.create = (req, res) => {
   if (req.body.stock > 20 || req.body.stock <= 0) {
-    if (
-      !req.body.skillsId ||
-      !req.body.descriptions ||
-      !req.body.stock
-    ) {
+    if (!req.body.skillsId || !req.body.descriptions || !req.body.stock) {
       res.status(400).send({ message: "Content can not be empty" });
       return;
     }
@@ -36,8 +32,11 @@ exports.create = (req, res) => {
     })
     // eslint-disable-next-line no-unused-vars
     .catch((err) => {
-      res.status(503).send({...err});
+      res.status(500).send({
+        message:
+          err.message || "some error occurred while creating the boiler-type.",
       });
+    });
 };
 
 exports.findAll = (req, res) => {
@@ -54,14 +53,18 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  BoilerType.findOne({ _id: ObjectId(req.params._id) })
+  BoilerType.findOne({ _id: ObjectId(req.params.id) })
     .then((data) => {
       if (!data) {
-        return res.status(404).send({
+        res.status(404).send({
           message: "Boiler Type could not be found",
         });
+        return;
       }
-      res.send(data);
+      res.status(200).send({
+        message: "Request completed succesfully.",
+        data,
+      });
     })
     // eslint-disable-next-line no-unused-vars
     .catch((err) => {
@@ -73,11 +76,7 @@ exports.findOne = (req, res) => {
 
 exports.update = (req, res) => {
   if (req.body.stock > 20 || req.body.stock <= 0) {
-    if (
-      !req.body.skillsId ||
-      !req.body.descriptions ||
-      !req.body.stock
-    ) {
+    if (!req.body.skillsId || !req.body.descriptions || !req.body.stock) {
       res.status(400).send({ message: "Content can not be empty" });
       return;
     }
@@ -93,8 +92,9 @@ exports.update = (req, res) => {
     return;
   }
 
-
-  BoilerType.findOneAndUpdate({ _id: ObjectId(req.params._id) }, req.body, { useFindAndModify: false })
+  BoilerType.findOneAndUpdate({ _id: ObjectId(req.params.id) }, req.body, {
+    useFindAndModify: false,
+  })
     .then((data) => {
       if (!data) {
         res.status(404).send({
@@ -105,19 +105,27 @@ exports.update = (req, res) => {
     // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
-        ...err
+        ...err,
       });
     });
 };
 
 exports.delete = (req, res) => {
-  BoilerType.findOneAndRemove({ _id: ObjectId(req.params._id) }, { useFindAndModify: false })
+  BoilerType.findOneAndRemove(
+    { _id: ObjectId(req.params.id) },
+    { useFindAndModify: false }
+  )
     // eslint-disable-next-line no-unused-vars
-    .then((data) => res.send(data))
+    .then(() =>
+      res.status(200).send({ message: "Boiler Type was removed succesfully" })
+    )
     // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
-        ...err
+        message: `Some error ocurred while removing technician with id = ${ObjectId(
+          req.params.id
+        )}`,
+        err,
       });
     });
 };
