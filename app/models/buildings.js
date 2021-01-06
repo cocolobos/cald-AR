@@ -3,11 +3,6 @@ module.exports = (mongoose) => {
     "building",
     mongoose.Schema(
       {
-        _id: {
-          type: Number,
-          require: true,
-          unique: true,
-        },
         address: {
           type: String,
           require: true,

@@ -1,25 +1,12 @@
 const db = require("../models");
 const Appointment = db.appointments;
-const ObjectId = require('mongoose').Types.ObjectId;
+const ObjectId = require("mongoose").Types.ObjectId;
 
 exports.create = (req, res) => {
-  if (req.body.estimatedTime <9) {    
-    if (       
+  if (req.body.estimatedTime < 9) {
+    if (
       !req.body.buildingId ||
-      !req.body.boilerId ||       
-      !req.body.maintenanceType ||
-      !req.body.date ||
-      !req.body.estimatedTime
-    ) {
-      res.status(400).send({ message: "Content can not be empty." });
-      return;
-    }    
-  } else {
-    res.status(409).send({ message:  `${req.body.estimatedTime} cannot be more than 9 hours.` });
-  {
-    if (      
-      !req.body.buildingId ||
-      !req.body.boilerId ||     
+      !req.body.boilerId ||
       !req.body.maintenanceType ||
       !req.body.date ||
       !req.body.estimatedTime
@@ -27,10 +14,14 @@ exports.create = (req, res) => {
       res.status(400).send({ message: "Content can not be empty." });
       return;
     }
-  
+  } else {
+    res.status(409).send({
+      message: `${req.body.estimatedTime} cannot be more than 9 hours.`,
+    });
+    return;
   }
 
-  const appointment = new Appointment({  
+  const appointment = new Appointment({
     buildingId: req.body.buildingId,
     boilerId: req.body.buildingId,
     maintenanceType: req.body.maintenanceType,
@@ -71,7 +62,10 @@ exports.findOne = (req, res) => {
           message: `Appointment with id ${req.params.id} was not found.`,
         });
       }
-      res.send(data);
+      res.status(200).send({
+        message: "Request completed succesfully.",
+        data,
+      });
     })
     .catch((err) => {
       res.status(500).send({
@@ -88,50 +82,58 @@ exports.update = (req, res) => {
     });
   }
 
-  if (req.body.estimatedTime <9) {
-    
-      if (        
-        !req.body.buildingId ||
-        !req.body.boilerId ||
-        !req.body.maintenanceType ||
-        !req.body.date ||
-        !req.body.estimatedTime
-      ) {
-        res.status(400).send({ message: "Content can not be empty." });
-        return;
-      }
-    
-  } else {
-    res.status(409).send({ message:  `${req.body.estimatedTime} cannot be more than 9 hours.` });
+  if (req.body.estimatedTime < 9) {
+    if (
+      !req.body.buildingId ||
+      !req.body.boilerId ||
+      !req.body.maintenanceType ||
+      !req.body.date ||
+      !req.body.estimatedTime
+    ) {
+      res.status(400).send({ message: "Content can not be empty." });
       return;
+    }
+  } else {
+    res.status(409).send({
+      message: `${req.body.estimatedTime} cannot be more than 9 hours.`,
+    });
+    return;
   }
 
-  Appointment.findOneAndUpdate({ _id: ObjectId(req.params.id) }, req.body,
-  { useFindAndModify: false })
+  Appointment.findOneAndUpdate({ _id: ObjectId(req.params.id) }, req.body, {
+    useFindAndModify: false,
+  })
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot update appointment with id=${ObjectId(req.params.id)}. Maybe the appointment was not found`,
+          message: `Cannot update appointment with id=${ObjectId(
+            req.params.id
+          )}. Maybe the appointment was not found`,
         });
       } else res.send({ message: "Appointment was updated successfully." });
-      res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: `Some error ocurred while updating appointment with id=${ObjectId(req.params.id)}`,
+        message: `Some error (${err}) ocurred while updating appointment with id=${ObjectId(
+          req.params.id
+        )}`,
       });
     });
 };
 
 exports.delete = (req, res) => {
-  const id = req.params.id;
-  Appointment.findOneAndRemove({ _id: ObjectId(req.params.id) }, { useFindAndModify: false }) 
-    .then((data) =>
-      res.send({ message: "Appointment was removed successfully." })
+  Appointment.findOneAndRemove(
+    { _id: ObjectId(req.params.id) },
+    { useFindAndModify: false }
+  )
+    .then(() =>
+      res.status(200).send({ message: "Appointment was removed successfully." })
     )
     .catch((err) => {
       res.status(500).send({
-        message: `Error removing appointment with id= ${ObjectId(req.params.id)}`,
+        message: `(${err})Error removing appointment with id= ${ObjectId(
+          req.params.id
+        )}`,
       });
     });
-}} 
+};
