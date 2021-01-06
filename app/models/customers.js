@@ -3,12 +3,6 @@ module.exports = (mongoose) => {
     "Customers",
     mongoose.Schema(
       {
-        id: {
-          type: Number,
-          required: true,
-          index: true,
-          unique: true,
-        },
         customerType: {
           type: String,
           required: true,

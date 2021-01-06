@@ -1,52 +1,45 @@
 const db = require("../models");
 const Customer = db.customers;
+const ObjectId = require("mongoose").Types.ObjectId;
 
 exports.create = (req, res) => {
-  if (/^(?=.{5,})([a-zA-Z0-9]+\s{1}[0-9]+)$/.test(req.body.fiscal_address)) {
-    if (/^[a-z0-9A-Z._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/.test(req.body.email)) {
-      if (
-        !req.body.id ||
-        !req.body.customerType ||
-        !req.body.email ||
-        !req.body.buildings ||
-        !req.body.fiscal_address
-      ) {
-        res.status(400).send({ message: "Content can not be empty!" });
-        return;
-      }
-    } else {
-      res
-        .status(409)
-        .send({ message: ` ${req.body.email} is not a valid Email ` });
+  if (/^[a-z0-9A-Z._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/.test(req.body.email)) {
+    if (
+      !req.body.customerType ||
+      !req.body.email ||
+      !req.body.buildings ||
+      !req.body.fiscal_address
+    ) {
+      res.status(400).send({ message: "Content can not be empty!" });
       return;
     }
   } else {
     res
       .status(409)
-      .send({ message: ` ${req.body.fiscal_address} is not a valid Address ` });
+      .send({ message: ` ${req.body.email} is not a valid Email ` });
     return;
   }
+} 
 
-  const customer = new Customer({
-    id: req.body.id,
-    customerType: req.body.customerType,
-    email: req.body.email,
-    buildings: req.body.buildings,
-    fiscal_address: req.body.fiscal_address,
+const customer = new Customer({
+  customerType: req.body.customerType,
+  email: req.body.email,
+  buildings: req.body.buildings,
+  fiscal_address: req.body.fiscal_address,
+});
+
+customer
+  .save(customer)
+  .then((data) => {
+    res.send(data);
+  })
+  .catch((err) => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while creating the customer",
+    });
   });
 
-  customer
-    .save(customer)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the customer",
-      });
-    });
-};
 
 exports.findAll = (req, res) => {
   Customer.find({})
@@ -62,7 +55,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  Customer.findOne({ id: req.params.id })
+  Customer.findOne({ _id: ObjectId(req.params.id) })
     .then((data) => {
       if (!data) {
         return res.status(404).send({
@@ -80,10 +73,8 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  if (/^(?=.{5,})([a-zA-Z0-9]+\s{1}[0-9]+)$/.test(req.body.fiscal_address)) {
     if (/^[a-z0-9A-Z._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/.test(req.body.email)) {
       if (
-        !req.body.id ||
         !req.body.customerType ||
         !req.body.email ||
         !req.body.buildings ||
@@ -98,20 +89,15 @@ exports.update = (req, res) => {
         .send({ message: ` ${req.body.email} is not a valid Email ` });
       return;
     }
-  } else {
-    res
-      .status(409)
-      .send({ message: ` ${req.body.fiscal_address} is not a valid Address ` });
-    return;
   }
 
-  const id = req.params.id;
-
-  Customer.findOneAndUpdate({ id }, req.body, { useFindAndModify: false })
+  Customer.findOneAndUpdate({ _id: ObjectId(req.params.id) }, req.body, { useFindAndModify: false })
     .then((data) => {
       if (!data) {
         return res.status(404).send({
-          message: ` Cannot update Customer with id=${id}.Maybe Customer was not found!`,
+          message: `Cannot update Customer with id = ${ObjectId(
+            req.params.id
+          )}. Maybe Customer was not found`,
         });
       } else res.send({ message: "Customer was updated successfully." });
       res.send(data);
@@ -119,14 +105,16 @@ exports.update = (req, res) => {
     // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating Customer with id =" + id,
+        message: `Error updating Customer with id = ${ObjectId(
+          req.params.id
+        )}`,
+        err,
       });
     });
-};
+
 
 exports.delete = (req, res) => {
-  const id = req.params.id;
-  Customer.findOneAndRemove({ id }, { useFindAndModify: false })
+  Customer.findOneAndRemove({ _id: ObjectId(req.params.id)}, { useFindAndModify: false })
     // eslint-disable-next-line no-unused-vars
     .then((data) => {
       res.send({ message: " Customer was removed succesfully." });
@@ -134,7 +122,10 @@ exports.delete = (req, res) => {
     // eslint-disable-next-line no-unused-vars
     .catch((err) => {
       res.status(500).send({
-        message: "Error removing Customer with id=" + id,
+        message: `Some error ocurred while removing customer with id = ${ObjectId(
+          req.params.id
+        )}`,
+        err,
       });
     });
 };
