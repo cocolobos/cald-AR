@@ -19,7 +19,7 @@ exports.create = (req, res) => {
       .send({ message: ` ${req.body.email} is not a valid Email ` });
     return;
   }
-} 
+ 
 
 const customer = new Customer({
   customerType: req.body.customerType,
@@ -39,6 +39,7 @@ customer
         err.message || "Some error occurred while creating the customer",
     });
   });
+}
 
 
 exports.findAll = (req, res) => {
@@ -73,23 +74,23 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-    if (/^[a-z0-9A-Z._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/.test(req.body.email)) {
-      if (
-        !req.body.customerType ||
-        !req.body.email ||
-        !req.body.buildings ||
-        !req.body.fiscal_address
-      ) {
-        res.status(400).send({ message: "Data to update can not be empty!" });
-        return;
-      }
-    } else {
-      res
-        .status(409)
-        .send({ message: ` ${req.body.email} is not a valid Email ` });
+  if (/^[a-z0-9A-Z._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/.test(req.body.email)) {
+    if (
+      !req.body.customerType ||
+      !req.body.email ||
+      !req.body.buildings ||
+      !req.body.fiscal_address
+    ) {
+      res.status(400).send({ message: "Data to update can not be empty!" });
       return;
     }
+  } else {
+    res
+      .status(409)
+      .send({ message: ` ${req.body.email} is not a valid Email ` });
+    return;
   }
+
 
   Customer.findOneAndUpdate({ _id: ObjectId(req.params.id) }, req.body, { useFindAndModify: false })
     .then((data) => {
@@ -111,6 +112,7 @@ exports.update = (req, res) => {
         err,
       });
     });
+}
 
 
 exports.delete = (req, res) => {

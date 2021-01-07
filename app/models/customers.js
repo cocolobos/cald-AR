@@ -6,7 +6,6 @@ module.exports = (mongoose) => {
         customerType: {
           type: String,
           required: true,
-          enum: ["Particular", "Business"],
         },
         email: {
           type: String,
