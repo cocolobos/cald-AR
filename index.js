@@ -1,4 +1,5 @@
 const express = require("express");
+const dotenv = require('dotenv')
 const db = require("./app/models");
 const app = express();
 const router = require("./app/routes");
@@ -10,6 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(router);
 
+dotenv.config();
 const PORT = process.env.PORT || 4000;
 
 db.mongoose
